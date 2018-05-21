@@ -1,6 +1,4 @@
-# Related-considerations-for-HTML-CSS-JS
-
-## 注意事项
+## 开发注意事项
 
 1、插件的版本是否统一；
 
