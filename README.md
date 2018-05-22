@@ -37,13 +37,92 @@ display: -webkit-box;
 input::-webkit-input-placeholder{
   color:red;
 }
-input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+input::-moz-placeholder{
   color:red;
 }
-input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+input:-moz-placeholder{
   color:red;
 }
-input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+input:-ms-input-placeholder{
   color:red;
 }
  ```
+ 
+ ### 4、渐变
+*  从上到下
+ ```
+ background: -webkit-linear-gradient(red, blue);
+ background: -o-linear-gradient(red, blue);
+ background: -moz-linear-gradient(red, blue);
+ background: linear-gradient(red, blue);
+ ```
+ 
+*  从左到右
+ ```
+ background: linear-gradient(to right, red , blue);
+ ```
+ 
+*  角度
+ ```
+ background: linear-gradient(to bottom right, red , blue);  /*左上角至右下角*/
+ background: linear-gradient(180deg, red, blue);  /*指定角度*/
+ ```
+ 
+*  多个颜色
+ ```
+ background: linear-gradient(red, green, blue);
+ ```
+ 
+ ## HTML head
+ ```
+ <meta charset="UTF-8">
+ <!-- 设置文档宽度、是否缩放 -->
+ <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+ <!-- 优先使用IE最新版本和Chrome -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title></title>
+<!-- 关键字 -->
+<meta name="keywords" content="">
+<!-- 描述 -->
+<meta name="description" content="">
+<!--[if lte IE 8]>
+<p style="background:#000;text-align: center;color:#fff;font-size: 16px; line-height: 25px;">你的浏览器太老了，请到<a href="http://browsehappy.com" style="color:#ddd">这里</a>更新，以获取最佳的体验</p>
+<![endif]-->
+<!--[if lte IE 7]>
+<p style="background:#000;text-align: center;color:#fff;font-size: 16px; line-height: 25px;">你的浏览器太老了，请到<a href="http://browsehappy.com" style="color:#ddd">这里</a>更新，以获取最佳的体验</p>
+<![endif]-->
+<!--[if lte IE 6]>
+<p style="background:#000;text-align: center;color:#fff;font-size: 16px; line-height: 25px;">你的浏览器太老了，请到<a href="http://browsehappy.com" style="color:#ddd">这里</a>更新，以获取最佳的体验</p>
+<![endif]-->
+<!-- 360使用Google Chrome Frame -->
+<meta name="renderer" content="webkit">
+<!-- 百度禁止转码 -->
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<!-- 定义网页搜索引擎索引方式 -->
+<meta name="robots" content="index,follow">
+<!-- ios设备 -->
+<!-- 添加到主屏后的标题 -->
+<meta name="apple-mobile-web-app-title" content="标题">
+<!-- 是否启用WebApp全屏模式 -->
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="yes" name="apple-touch-fullscreen">
+<!-- 设置状态栏的背景颜色 -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Android theme-color用来控制选项卡颜色。 -->
+<meta name="theme-color" content="#747474">
+<meta name="mobile-web-app-capable" content="yes">
+<!-- 关闭chrome浏览器下翻译插件 -->
+<meta name="google" value="notranslate" />
+<!-- uc强制竖屏 -->
+<meta name="screen-orientation" content="portrait">
+<!-- QQ强制竖屏 -->
+<meta name="x5-orientation" content="portrait">
+<!-- UC强制全屏 -->
+<meta name="full-screen" content="yes">
+<!-- QQ强制全屏 -->
+<meta name="x5-fullscreen" content="true">
+<!-- UC应用模式 -->
+<meta name="browsermode" content="application">
+<!-- QQ应用模式 -->
+<meta name="x5-page-mode" content="app">
+  ```
