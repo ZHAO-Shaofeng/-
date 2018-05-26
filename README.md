@@ -73,6 +73,23 @@ input:-ms-input-placeholder{
  background: linear-gradient(red, green, blue);
  ```
  
+ ### 5、flex页脚置底(兼容至ie10)
+ ```
+html{height: 100%;}
+body{
+	height: 100%;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.main{
+	flex: 1 0 auto;
+}
+.footer{
+	flex: 0 0 auto;
+}
+```
+ 
  ## HTML head
  ```
  <meta charset="UTF-8">
