@@ -147,3 +147,14 @@ body{
 <!-- QQ应用模式 -->
 <meta name="x5-page-mode" content="app">
   ```
+  
+## 头部提取之后，导航跳转添加对应的active
+添加到提取的header.html中
+```
+$(".navbar-nav a").each(function(){
+  $this = $(this);
+  if($this[0].href==String(window.location)){
+    $(".navbar-nav li").removeClass("active");
+    $this.parent("li").addClass("active");
+}
+```
