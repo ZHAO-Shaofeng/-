@@ -93,6 +93,9 @@ body{
 	flex: 0 0 auto;
 }
 ```
+
+### 6、css三角形
+[传送门](http://www.jb51.net/article/42513.htm)
  
  ## HTML head
  ```
