@@ -175,3 +175,12 @@ $(".navbar-nav a").each(function(){
     display: flex;
     overflow-y: hidden;
 ```
+## 获取游览器参数值
+获取游览器的参数的值。
+```
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]); return null;
+}
+```
