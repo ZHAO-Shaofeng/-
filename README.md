@@ -163,7 +163,8 @@ $(".navbar-nav a").each(function(){
   if($this[0].href==String(window.location)){
     $(".navbar-nav li").removeClass("active");
     $this.parent("li").addClass("active");
-}
+  }
+});
 ```
 
 ## tab常用响应式不转行，可左右拉动
