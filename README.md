@@ -175,8 +175,8 @@ $(".navbar-nav a").each(function(){
     display: flex;
     overflow-y: hidden;
 ```
-## 获取游览器参数值
-获取游览器的参数的值。
+## 获取URL参数值
+获取URL的参数的值。
 ```
 function getQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
