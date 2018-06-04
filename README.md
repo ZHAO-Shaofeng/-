@@ -165,3 +165,12 @@ $(".navbar-nav a").each(function(){
     $this.parent("li").addClass("active");
 }
 ```
+
+## tab常用响应式不转行，可左右拉动
+放在容器里的样式
+```
+    white-space: nowrap;
+    overflow-x: auto;
+    display: flex;
+    overflow-y: hidden;
+```
