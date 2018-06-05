@@ -184,3 +184,12 @@ function getQueryString(name) {
     if (r != null) return unescape(r[2]); return null;
 }
 ```
+## 让背景图随DIV变化，且不变形居中
+让背景图随DIV变化，且不变形居中。
+```
+   background-image: url("../images/index/banner.png");
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-attachment: fixed;
+   background-position: center center;
+```
