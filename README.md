@@ -1,3 +1,23 @@
+## 锚点
+*   [开发规范](#开发规范)
+*   [开发注意事项](#开发注意事项)
+*   [html-head](#html-head)
+*   [CSS常用](#CSS常用)
+    	[1、单行溢出省略号](#1、单行溢出省略号)
+	[2、多行溢出省略号 ](#2、多行溢出省略号)
+    	[3、placeholder样式](#3、placeholder样式)
+	[4、渐变](#4、渐变)
+	[5、flex页脚置底(兼容至ie10)](#5、flex页脚置底(兼容至ie10))
+	[6、css三角形](#6、css三角形)
+	[7、tab常用响应式不转行，可左右拉动](#7、tab常用响应式不转行，可左右拉动)
+	[8、让背景图随DIV变化，且不变形居中](#8、让背景图随DIV变化，且不变形居中)
+*   [JS常用](#JS常用)
+    	[1、获取URL参数值](#1、获取URL参数值)
+	[2、头部提取之后，导航跳转添加对应的active ](#2、头部提取之后，导航跳转添加对应的active)
+    	[3、swiper常用参数](#3、swiper常用参数)
+	[4、锚链接平滑移动](#4、锚链接平滑移动)
+
+
 ## 开发规范
 > 不管有多少人共同参与同一项目，一定要确保每一行代码都像是同一个人编写的。    
 [编码规范传送门](http://codeguide.bootcss.com/)
@@ -24,7 +44,7 @@
 9、一排的展示布局优先使用swiper，否则后面说要加滑动功能就麻烦一些，不如直接用swiper然后不初始化就行了！
 
 
-## HTML head
+## html-head
 ```
 <meta charset="UTF-8">
 <!-- Set the width of the document, or not -->
@@ -91,7 +111,7 @@ text-overflow: ellipsis;
 white-space: nowrap;
 ```
 
-### 2、多行溢出省略号 
+### 2、多行溢出省略号
 ```
 overflow : hidden;
 text-overflow: ellipsis;
@@ -252,4 +272,21 @@ var Swiper1 = new Swiper('.swiper-container', {
           }
         }
     })
+```
+
+### 4、锚链接平滑移动
+```
+  $('a[href*=#]').click(function() {  
+      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {  
+          var $target = $(this.hash);  
+          $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');  
+          if ($target.length) {  
+              var targetOffset = $target.offset().top;  
+              $('html,body').animate({  
+                  scrollTop: targetOffset  
+              },700);  
+              return false;  
+          }  
+      }  
+  });
 ```
