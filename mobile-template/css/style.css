@@ -1,0 +1,18 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2015-05-29 17:11:01
+ * @version $Id$
+ */
+* { padding: 0; margin: 0; transition-delay:0ms; transition-timing-function:linear; transition-duration:260ms; transition-property:color, background-color, background-image, transform, rectangle; }
+html { font-size:100px; height:100%; }
+a { border:0; text-decoration: none; }
+input { outline:none; }
+img, input { border:0; vertical-align:middle; }
+li { list-style: none; }
+body { width:100%; padding: 0; margin: 0 auto; font-family: '微软雅黑'; background:#fe4e4e; font-size:0.5rem; }
+.pull-left { float:left; }
+.pull-right { float:right; }
+.clear { clear:both; }
+/*主体部分*/
