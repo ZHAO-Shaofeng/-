@@ -21,7 +21,67 @@
 
 8、链接加title，图标加alt，logo要用h1包裹！
 
-9、布局优先使用swiper，否则后面说要加滑动功能就得重写！
+9、一排的展示布局优先使用swiper，否则后面说要加滑动功能就麻烦一些，不如直接用swiper然后不初始化就行了！
+
+
+## HTML head
+```
+<meta charset="UTF-8">
+<!-- Set the width of the document, or not -->
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<!-- First use the latest version of IE and Chrome -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<title></title>
+<!-- Keyword -->
+<meta name="keywords" content="">
+<!-- describe -->
+<meta name="description" content="">
+<!--[if lte IE 8]>
+<p style="background:#000;text-align: center;color:#fff;font-size: 16px; line-height: 25px;">你的浏览器太老了，请到<a href="http://browsehappy.com" style="color:#ddd">这里</a>更新，以获取最佳的体验</p>
+<![endif]-->
+<!--[if lte IE 7]>
+<p style="background:#000;text-align: center;color:#fff;font-size: 16px; line-height: 25px;">你的浏览器太老了，请到<a href="http://browsehappy.com" style="color:#ddd">这里</a>更新，以获取最佳的体验</p>
+<![endif]-->
+<!--[if lte IE 6]>
+<p style="background:#000;text-align: center;color:#fff;font-size: 16px; line-height: 25px;">你的浏览器太老了，请到<a href="http://browsehappy.com" style="color:#ddd">这里</a>更新，以获取最佳的体验</p>
+<![endif]-->
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<!-- 360 use Google Chrome Frame -->
+<meta name="renderer" content="webkit">
+<!-- Baidu prohibition of transcoding -->
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<!-- Definition of web search engine index -->
+<meta name="robots" content="index,follow">
+<!-- ios -->
+<!-- The title that is added to the main screen -->
+<meta name="apple-mobile-web-app-title" content="titie">
+<!-- Whether WebApp full screen mode is enabled -->
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="yes" name="apple-touch-fullscreen">
+<!-- Setting the background color of the State Bar -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Android theme-color  Used to control the color of the tabs -->
+<meta name="theme-color" content="#747474">
+<meta name="mobile-web-app-capable" content="yes">
+<!-- Turn off the translation plug-in under the Chrome browser -->
+<meta name="google" value="notranslate"/>
+<!-- uc Forced vertical screen -->
+<meta name="screen-orientation" content="portrait">
+<!-- QQ Forced vertical screen -->
+<meta name="x5-orientation" content="portrait">
+<!-- UC Mandatory full screen -->
+<meta name="full-screen" content="yes">
+<!-- QQ Mandatory full screen -->
+<meta name="x5-fullscreen" content="true">
+<!-- UC Application mode -->
+<meta name="browsermode" content="application">
+<!-- QQ Application mode -->
+<meta name="x5-page-mode" content="app">
+```
 
 ## CSS常用
 ### 1、单行溢出省略号
@@ -54,35 +114,41 @@ input:-moz-placeholder{
 input:-ms-input-placeholder{
   color:red;
 }
- ```
+```
  
- ### 4、渐变
+### 4、渐变
 *  从上到下
- ```
- background: -webkit-linear-gradient(red, blue);
- background: -o-linear-gradient(red, blue);
- background: -moz-linear-gradient(red, blue);
- background: linear-gradient(red, blue);
- ```
+```
+background: -webkit-linear-gradient(red, blue);
+background: -o-linear-gradient(red, blue);
+background: -moz-linear-gradient(red, blue);
+background: linear-gradient(red, blue);
+```
  
 *  从左到右
- ```
- background: linear-gradient(to right, red , blue);
- ```
+```
+background: linear-gradient(to right, red , blue);
+```
  
 *  角度
- ```
- background: linear-gradient(to bottom right, red , blue);  /*左上角至右下角*/
- background: linear-gradient(180deg, red, blue);  /*指定角度*/
- ```
+```
+background: linear-gradient(to bottom right, red , blue);  /*左上角至右下角*/
+background: linear-gradient(180deg, red, blue);  /*指定角度*/
+```
  
 *  多个颜色
- ```
- background: linear-gradient(red, green, blue);
- ```
+```
+background: linear-gradient(red, green, blue);
+```
  
- ### 5、flex页脚置底(兼容至ie10)
- ```
+### 5、flex页脚置底(兼容至ie10)
+```
+<body>
+    <header></header>
+    <main></main>
+    <footer></footer>
+</body>
+
 html{height: 100%;}
 body{
 	height: 100%;
@@ -100,62 +166,38 @@ body{
 
 ### 6、css三角形
 [传送门](http://www.jb51.net/article/42513.htm)
- 
- ## HTML head
- ```
- <meta charset="UTF-8">
- <!-- 设置文档宽度、是否缩放 -->
- <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
- <!-- 优先使用IE最新版本和Chrome -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<title></title>
-<!-- 关键字 -->
-<meta name="keywords" content="">
-<!-- 描述 -->
-<meta name="description" content="">
-<!--[if lte IE 8]>
-<p style="background:#000;text-align: center;color:#fff;font-size: 16px; line-height: 25px;">你的浏览器太老了，请到<a href="http://browsehappy.com" style="color:#ddd">这里</a>更新，以获取最佳的体验</p>
-<![endif]-->
-<!--[if lte IE 7]>
-<p style="background:#000;text-align: center;color:#fff;font-size: 16px; line-height: 25px;">你的浏览器太老了，请到<a href="http://browsehappy.com" style="color:#ddd">这里</a>更新，以获取最佳的体验</p>
-<![endif]-->
-<!--[if lte IE 6]>
-<p style="background:#000;text-align: center;color:#fff;font-size: 16px; line-height: 25px;">你的浏览器太老了，请到<a href="http://browsehappy.com" style="color:#ddd">这里</a>更新，以获取最佳的体验</p>
-<![endif]-->
-<!-- 360使用Google Chrome Frame -->
-<meta name="renderer" content="webkit">
-<!-- 百度禁止转码 -->
-<meta http-equiv="Cache-Control" content="no-siteapp">
-<!-- 定义网页搜索引擎索引方式 -->
-<meta name="robots" content="index,follow">
-<!-- ios设备 -->
-<!-- 添加到主屏后的标题 -->
-<meta name="apple-mobile-web-app-title" content="标题">
-<!-- 是否启用WebApp全屏模式 -->
-<meta content="yes" name="apple-mobile-web-app-capable">
-<meta content="yes" name="apple-touch-fullscreen">
-<!-- 设置状态栏的背景颜色 -->
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<!-- Android theme-color用来控制选项卡颜色。 -->
-<meta name="theme-color" content="#747474">
-<meta name="mobile-web-app-capable" content="yes">
-<!-- 关闭chrome浏览器下翻译插件 -->
-<meta name="google" value="notranslate" />
-<!-- uc强制竖屏 -->
-<meta name="screen-orientation" content="portrait">
-<!-- QQ强制竖屏 -->
-<meta name="x5-orientation" content="portrait">
-<!-- UC强制全屏 -->
-<meta name="full-screen" content="yes">
-<!-- QQ强制全屏 -->
-<meta name="x5-fullscreen" content="true">
-<!-- UC应用模式 -->
-<meta name="browsermode" content="application">
-<!-- QQ应用模式 -->
-<meta name="x5-page-mode" content="app">
-  ```
-  
-## 头部提取之后，导航跳转添加对应的active
+
+### 7、tab常用响应式不转行，可左右拉动
+放在容器里的样式
+```
+    white-space: nowrap;
+    overflow-x: auto;
+    display: flex;
+    overflow-y: hidden;
+```
+
+### 8、让背景图随DIV变化，且不变形居中
+让背景图随DIV变化，且不变形居中。
+```
+   background-image: url("../images/index/banner.png");
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-attachment: fixed;
+   background-position: center center;
+```
+
+## JS常用
+### 1、获取URL参数值
+获取URL的参数的值。
+```
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]); return null;
+}
+```
+
+### 2、头部提取之后，导航跳转添加对应的active
 添加到提取的header.html中
 ```
 $(".navbar-nav a").each(function(){
@@ -167,29 +209,47 @@ $(".navbar-nav a").each(function(){
 });
 ```
 
-## tab常用响应式不转行，可左右拉动
-放在容器里的样式
+### 3、swiper常用参数
 ```
-    white-space: nowrap;
-    overflow-x: auto;
-    display: flex;
-    overflow-y: hidden;
-```
-## 获取URL参数值
-获取URL的参数的值。
-```
-function getQueryString(name) {
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-    var r = window.location.search.substr(1).match(reg);
-    if (r != null) return unescape(r[2]); return null;
-}
-```
-## 让背景图随DIV变化，且不变形居中
-让背景图随DIV变化，且不变形居中。
-```
-   background-image: url("../images/index/banner.png");
-   background-repeat: no-repeat;
-   background-size: cover;
-   background-attachment: fixed;
-   background-position: center center;
+var Swiper1 = new Swiper('.swiper-container', {
+        autoplay: {		//自动播放
+            delay: 1000,	//间隔时间
+            disableOnInteraction: false,	//用户操作swiper之后，是否禁止autoplay。
+        },
+        slidesPerView: 4,	//一屏显示多少个
+	slidesPerColumn: 2,	//显示2行
+        spaceBetween: 30,	//每个之间的间距
+        noSwiping : true,	//使该slide无法拖动，希望文字被选中时可以考虑使用
+        noSwipingClass : 'no-swiper',
+	centeredSlides : true,	//居中显示
+	loop: true,		//头尾循环
+	observer: true,		//修改swiper自己或子元素时，自动初始化swiper 
+        observeParents: true,	//修改swiper的父元素时，自动初始化swiper 
+	pagination: {		//分页器
+            el: '.certificate-pagination',
+            clickable :true,	//允许点击分页器切换
+        },
+	navigation: {		//前进后退按钮
+	nextEl: '.swiper-button-next',
+	prevEl: '.swiper-button-prev',
+	},
+        breakpoints: {		//响应式设置
+          1200: {
+            slidesPerView: 4,
+            spaceBetween: 35
+          },
+          992: {
+            slidesPerView: 3,
+            spaceBetween: 35
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 35
+          },
+          400: {
+            slidesPerView: 1,
+            spaceBetween: 35
+          }
+        }
+    })
 ```
