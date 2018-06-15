@@ -206,7 +206,7 @@ body{
    background-position: center center;
 ```
 
-###9、重置样式
+### 9、重置样式
 参考网站：https://meyerweb.com/eric/tools/css/reset/index.html
 ```
 /* http://meyerweb.com/eric/tools/css/reset/ 
