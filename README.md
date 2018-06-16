@@ -11,7 +11,8 @@
    6. [css三角形](#6css三角形)
    7. [tab常用响应式不转行，可左右拉动](#7tab常用响应式不转行可左右拉动)
    8. [让背景图随DIV变化，且不变形居中](#8让背景图随DIV变化且不变形居中)
-* ### [JS常用](#js常用-1)
+   9. [重置样式](#9重置样式)
+* #### [JS常用](#js常用-1)
    1. [获取URL参数值](#1获取URL参数值)
    2. [头部提取之后，导航跳转添加对应的active ](#2头部提取之后导航跳转添加对应的active)
    3. [swiper常用参数](#3swiper常用参数)
@@ -347,7 +348,7 @@ var Swiper1 = new Swiper('.swiper-container', {
 
 ### 4、锚链接平滑移动
 ```
-  $('a[href*=#]').click(function() {  
+  $('.navbar-nav a[href*=#]').click(function() {  
       if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {  
           var $target = $(this.hash);  
           $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');  
