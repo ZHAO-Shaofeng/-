@@ -107,9 +107,28 @@
 
 ## CSS常用
 ### 1、编写CSS规范
-一个项目不可能从头到尾都是你一个人在开发，哪怕是一个很小的项目，如果每个人都把规范做到极致，所有事情都会变得更简单。在我遇到的大部分开发中，用Git合并项目时，遇到最多的冲突就是样式表用来用去不知道在用谁的，改来改去还不好改；如果我们把样式拆分成模块会方便很多：譬如在用less的时候
+一个项目不可能从头到尾都是你一个人在开发，哪怕是一个很小的项目，如果每个人都把规范做到极致，所有事情都会变得更简单。在我遇到的大部分开发中，用Git合并项目时，遇到最多的冲突就是样式表用来用去不知道在用谁的，改来改去还不好改；如果我们把样式拆分成模块会方便很多，这样出了问题一看就知道是谁的锅了，譬如在用Less的时候：
 
-![]()
+![Less目录](https://raw.githubusercontent.com/ZHAO-Shaofeng/Related-considerations-for-HTML-CSS-JS/master/github-img/mulu.png)
+
+这样的目录一目了然哪个文件是哪个部分的
+
+将经常用到的样式单独定义写到_variable.less里
+
+![全局变量](https://raw.githubusercontent.com/ZHAO-Shaofeng/Related-considerations-for-HTML-CSS-JS/master/github-img/variable.png)
+
+然后再把所有的文件引入到style.less
+
+![整合less](https://raw.githubusercontent.com/ZHAO-Shaofeng/Related-considerations-for-HTML-CSS-JS/master/github-img/style.png)
+
+哪怕你是用的原生css来写，如果在class上写明哪个文件并添加注释之后，不觉得这样看起来更清晰吗
+
+![原生css](https://raw.githubusercontent.com/ZHAO-Shaofeng/Related-considerations-for-HTML-CSS-JS/master/github-img/css.png)
+
+只是用Less举个例子想把规范说清楚，至于用原生css还是用css的预编译处理语言这里不作讨论
+
+但是显然用预编译处理语言在开发和贴近规范上会更方便一些，这是推荐使用的。    
+如果我们的样式表都是通过嵌套规则来一个个继承的，不管你用哪个都不会有任何冲突，因为彼此之间的关系是很清晰的。
 
 ### 2、单行溢出省略号
 ```
