@@ -2,22 +2,23 @@
 * #### [开发规范](#开发规范-1)
 * #### [开发注意事项](#开发注意事项-1)
 * #### [HTML head](#html-head-1)
-* #### [CSS常用](#css常用-1)
-   1. [单行溢出省略号](#1单行溢出省略号)
-   2. [多行溢出省略号](#2多行溢出省略号)
-   3. [placeholder样式](#3placeholder样式)
-   4. [渐变](#4渐变)
-   5. [flex页脚置底(兼容至ie10)](#5flex页脚置底兼容至ie10)
-   6. [css三角形](#6css三角形)
-   7. [tab常用响应式不转行，可左右拉动](#7tab常用响应式不转行可左右拉动)
-   8. [让背景图随DIV变化，且不变形居中](#8让背景图随div变化且不变形居中)
-   9. [重置样式](#9重置样式)
-* #### [JS常用](#js常用-1)
-   1. [获取URL参数值](#1获取URL参数值)
-   2. [头部提取之后，导航跳转添加对应的active ](#2头部提取之后导航跳转添加对应的active)
-   3. [swiper常用参数](#3swiper常用参数)
-   4. [锚链接平滑移动](#4锚链接平滑移动)
-   5. [数字递增](#5数字递增)
+* #### [CSS相关](#css相关-1)
+  1. [编写CSS规范](#1编写css规范)
+  2. [单行溢出省略号](#2单行溢出省略号)
+  3. [多行溢出省略号](#3多行溢出省略号)
+  4. [placeholder样式](#4placeholder样式)
+  5. [渐变](#5渐变)
+  6. [flex页脚置底(兼容至ie10)](#6flex页脚置底兼容至ie10)
+  7. [css三角形](#7css三角形)
+  8. [tab常用响应式不转行，可左右拉动](#8tab常用响应式不转行可左右拉动)
+  9. [让背景图随DIV变化，且不变形居中](#9让背景图随div变化且不变形居中)
+  10. [重置样式](#10重置样式)
+* #### [JS相关](#js相关-1)
+  1. [获取URL参数值](#1获取URL参数值)
+  2. [头部提取之后，导航跳转添加对应的active ](#2头部提取之后导航跳转添加对应的active)
+  3. [swiper常用参数](#3swiper常用参数)
+  4. [锚链接平滑移动](#4锚链接平滑移动)
+  5. [数字递增](#5数字递增)
 
 ## 开发规范
 > 不管有多少人共同参与同一项目，一定要确保每一行代码都像是同一个人编写的。    
@@ -105,14 +106,19 @@
 ```
 
 ## CSS常用
-### 1、单行溢出省略号
+### 1、编写CSS规范
+一个项目不可能从头到尾都是你一个人在开发，哪怕是一个很小的项目，如果每个人都把规范做到极致，所有事情都会变得更简单。在我遇到的大部分开发中，用Git合并项目时，遇到最多的冲突就是样式表用来用去不知道在用谁的，改来改去还不好改；如果我们把样式拆分成模块会方便很多：譬如在用less的时候
+
+![]()
+
+### 2、单行溢出省略号
 ```
 overflow: hidden;
 text-overflow: ellipsis;
 white-space: nowrap;
 ```
 
-### 2、多行溢出省略号
+### 3、多行溢出省略号
 ```
 overflow : hidden;
 text-overflow: ellipsis;
@@ -121,7 +127,7 @@ display: -webkit-box;
 -webkit-box-orient: vertical;
 ```
 
-### 3、placeholder样式
+### 4、placeholder样式
 ```
 input::-webkit-input-placeholder{
   color:red;
@@ -137,7 +143,7 @@ input:-ms-input-placeholder{
 }
 ```
  
-### 4、渐变
+### 5、渐变
 *  从上到下
 ```
 background: -webkit-linear-gradient(red, blue);
@@ -162,7 +168,7 @@ background: linear-gradient(180deg, red, blue);  /*指定角度*/
 background: linear-gradient(red, green, blue);
 ```
  
-### 5、flex页脚置底(兼容至ie10)
+### 6、flex页脚置底(兼容至ie10)
 ```
 <body>
     <header></header>
@@ -185,10 +191,10 @@ body{
 }
 ```
 
-### 6、css三角形
+### 7、css三角形
 [传送门](http://www.jb51.net/article/42513.htm)
 
-### 7、tab常用响应式不转行，可左右拉动
+### 8、tab常用响应式不转行，可左右拉动
 放在容器里的样式
 ```
     white-space: nowrap;
@@ -197,7 +203,7 @@ body{
     overflow-y: hidden;
 ```
 
-### 8、让背景图随DIV变化，且不变形居中
+### 9、让背景图随DIV变化，且不变形居中
 让背景图随DIV变化，且不变形居中。
 ```
    background-image: url("../images/index/banner.png");
@@ -207,7 +213,7 @@ body{
    background-position: center center;
 ```
 
-### 9、重置样式
+### 10、重置样式
 参考网站：https://meyerweb.com/eric/tools/css/reset/index.html
 ```
 /* http://meyerweb.com/eric/tools/css/reset/ 
