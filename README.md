@@ -13,6 +13,7 @@
   8. [tab常用响应式不转行，可左右拉动](#8tab常用响应式不转行可左右拉动)
   9. [让背景图随DIV变化，且不变形居中](#9让背景图随div变化且不变形居中)
   10. [重置样式](#10重置样式)
+  11. [div内容垂直布局](#11div垂直布局)
 * #### [JS相关](#js相关-1)
   1. [获取URL参数值](#1获取url参数值)
   2. [头部提取之后，导航跳转添加对应的active ](#2头部提取之后导航跳转添加对应的active)
@@ -283,6 +284,12 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+```
+
+### 11、div垂直布局
+```
+display: table-cell;
+vertical-align: middle;
 ```
 
 
