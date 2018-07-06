@@ -164,10 +164,6 @@ input:-ms-input-placeholder{
 ```
  
 ### 5、渐变
-
-background: -webkit-gradient(linear,0 0,0 100%,from(#F6F6F6),to(#DFDFDF));
-
-**下面的PC测试没问题，但ios下测试有问题、上面的io下没问题，推荐先使用上面的，待测试**
 *  从上到下
 ```
 background: -webkit-linear-gradient(red, blue);
