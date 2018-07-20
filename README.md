@@ -14,6 +14,7 @@
   9. [让背景图随DIV变化，且不变形居中](#9让背景图随div变化且不变形居中)
   10. [重置样式](#10重置样式)
   11. [div内容垂直布局](#11div垂直布局)
+  12. [input框在ios中的内阴影问题](#12input框在ios中的内阴影问题)
 * #### [JS相关](#js相关-1)
   1. [获取URL参数值](#1获取url参数值)
   2. [头部提取之后，导航跳转添加对应的active ](#2头部提取之后导航跳转添加对应的active)
@@ -47,7 +48,7 @@
 9、一排的展示布局优先使用swiper，否则后面说要加滑动功能就麻烦一些，不如直接用swiper然后不初始化就行了！
 
 
-## HTML <head>
+## HTML head
 ```
 <meta charset="UTF-8">
 <!-- Set the width of the document, or not -->
@@ -292,6 +293,10 @@ display: table-cell;
 vertical-align: middle;
 ```
 
+### 12、input框在ios中的内阴影问题
+```
+-webkit-appearance: none;
+```
 
 ## JS相关
 ### 1、获取URL参数值
