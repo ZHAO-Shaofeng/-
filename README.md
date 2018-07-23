@@ -21,6 +21,8 @@
   3. [swiper常用参数](#3swiper常用参数)
   4. [锚链接平滑移动](#4锚链接平滑移动)
   5. [数字递增](#5数字递增)
+* #### [Vue相关](#vue相关-1)
+  1. [使用sass](#1使用sass)
 
 ## 开发规范
 > 不管有多少人共同参与同一项目，一定要确保每一行代码都像是同一个人编写的。    
@@ -341,46 +343,46 @@ $(".navbar-nav a").each(function(){
 </div>
 
 var Swiper1 = new Swiper('.swiper-container', {
-        autoplay: {		//自动播放
-            delay: 1000,	//间隔时间
-            disableOnInteraction: false,	//用户操作swiper之后，是否禁止autoplay。
+    autoplay: {		                //自动播放
+        delay: 1000,	            //间隔时间
+        disableOnInteraction: false,	//用户操作swiper之后，是否禁止autoplay。
+    },
+    slidesPerView: 4,	            //一屏显示多少个
+    slidesPerColumn: 2,	          //显示2行
+    spaceBetween: 30,	            //每个之间的间距
+    noSwiping : true,	            //使该slide无法拖动，希望文字被选中时可以考虑使用
+    noSwipingClass : 'no-swiper',
+    centeredSlides : true,	      //居中显示
+    loop: true,		                //头尾循环
+    observer: true,		            //修改swiper自己或子元素时，自动初始化swiper 
+    observeParents: true,	        //修改swiper的父元素时，自动初始化swiper 
+    pagination: {		              //分页器
+        el: '.swiper-pagination',
+        clickable :true         	//允许点击分页器切换
+    },
+    navigation: {		              //前进后退按钮
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+    },
+    breakpoints: {		            //响应式设置
+        1200: {
+          slidesPerView: 4,
+          spaceBetween: 35
         },
-        slidesPerView: 4,	//一屏显示多少个
-	slidesPerColumn: 2,	//显示2行
-        spaceBetween: 30,	//每个之间的间距
-        noSwiping : true,	//使该slide无法拖动，希望文字被选中时可以考虑使用
-        noSwipingClass : 'no-swiper',
-	centeredSlides : true,	//居中显示
-	loop: true,		//头尾循环
-	observer: true,		//修改swiper自己或子元素时，自动初始化swiper 
-        observeParents: true,	//修改swiper的父元素时，自动初始化swiper 
-	pagination: {		//分页器
-            el: '.certificate-pagination',
-            clickable :true,	//允许点击分页器切换
+        992: {
+          slidesPerView: 3,
+          spaceBetween: 35
         },
-	navigation: {		//前进后退按钮
-	nextEl: '.swiper-button-next',
-	prevEl: '.swiper-button-prev',
-	},
-        breakpoints: {		//响应式设置
-          1200: {
-            slidesPerView: 4,
-            spaceBetween: 35
-          },
-          992: {
-            slidesPerView: 3,
-            spaceBetween: 35
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 35
-          },
-          400: {
-            slidesPerView: 1,
-            spaceBetween: 35
-          }
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 35
+        },
+        400: {
+          slidesPerView: 1,
+          spaceBetween: 35
         }
-    })
+    }
+})
 ```
 
 ### 4、锚链接平滑移动
@@ -503,3 +505,7 @@ function count(options){
   $this.countTo(options);
 }
 ```
+
+## Vue相关
+### 1、使用sass
+https://www.cnblogs.com/crazycode2/p/6535105.html
