@@ -21,6 +21,7 @@
   3. [swiper常用参数](#3swiper常用参数)
   4. [锚链接平滑移动](#4锚链接平滑移动)
   5. [数字递增](#5数字递增)
+  6. [侧边栏吸边](#6侧边栏吸边)
 * #### [Vue相关](#vue相关-1)
   1. [使用sass](#1使用sass)
 
@@ -53,15 +54,19 @@
 ## HTML head
 ```
 <meta charset="UTF-8">
-<!-- Set the width of the document, or not -->
+<!-- 设置文档宽度、是否缩放 -->
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<!-- First use the latest version of IE and Chrome -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<!-- 优先使用IE最新版本和Chrome -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title></title>
-<!-- Keyword -->
+<!-- 关键字 -->
 <meta name="keywords" content="">
-<!-- describe -->
+<!-- 描述 -->
 <meta name="description" content="">
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
 <!--[if lte IE 8]>
 <p style="background:#000;text-align: center;color:#fff;font-size: 16px; line-height: 25px;">你的浏览器太老了，请到<a href="http://browsehappy.com" style="color:#ddd">这里</a>更新，以获取最佳的体验</p>
 <![endif]-->
@@ -71,41 +76,36 @@
 <!--[if lte IE 6]>
 <p style="background:#000;text-align: center;color:#fff;font-size: 16px; line-height: 25px;">你的浏览器太老了，请到<a href="http://browsehappy.com" style="color:#ddd">这里</a>更新，以获取最佳的体验</p>
 <![endif]-->
-<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
-<!--[if lt IE 9]>
-<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-<!-- 360 use Google Chrome Frame -->
+<!-- 360使用Google Chrome Frame -->
 <meta name="renderer" content="webkit">
-<!-- Baidu prohibition of transcoding -->
+<!-- 百度禁止转码 -->
 <meta http-equiv="Cache-Control" content="no-siteapp">
-<!-- Definition of web search engine index -->
+<!-- 定义网页搜索引擎索引方式 -->
 <meta name="robots" content="index,follow">
-<!-- ios -->
-<!-- The title that is added to the main screen -->
-<meta name="apple-mobile-web-app-title" content="titie">
-<!-- Whether WebApp full screen mode is enabled -->
+<!-- ios设备 -->
+<!-- 添加到主屏后的标题 -->
+<meta name="apple-mobile-web-app-title" content="">
+<!-- 是否启用WebApp全屏模式 -->
 <meta content="yes" name="apple-mobile-web-app-capable">
 <meta content="yes" name="apple-touch-fullscreen">
-<!-- Setting the background color of the State Bar -->
+<!-- 设置状态栏的背景颜色 -->
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<!-- Android theme-color  Used to control the color of the tabs -->
+<!-- Android theme-color用来控制选项卡颜色。 -->
 <meta name="theme-color" content="#747474">
 <meta name="mobile-web-app-capable" content="yes">
-<!-- Turn off the translation plug-in under the Chrome browser -->
-<meta name="google" value="notranslate"/>
-<!-- uc Forced vertical screen -->
+<!-- 关闭chrome浏览器下翻译插件 -->
+<meta name="google" value="notranslate" />
+<!-- uc强制竖屏 -->
 <meta name="screen-orientation" content="portrait">
-<!-- QQ Forced vertical screen -->
+<!-- QQ强制竖屏 -->
 <meta name="x5-orientation" content="portrait">
-<!-- UC Mandatory full screen -->
+<!-- UC强制全屏 -->
 <meta name="full-screen" content="yes">
-<!-- QQ Mandatory full screen -->
+<!-- QQ强制全屏 -->
 <meta name="x5-fullscreen" content="true">
-<!-- UC Application mode -->
+<!-- UC应用模式 -->
 <meta name="browsermode" content="application">
-<!-- QQ Application mode -->
+<!-- QQ应用模式 -->
 <meta name="x5-page-mode" content="app">
 ```
 
@@ -504,6 +504,40 @@ function count(options){
   options=$.extend({}, options||{}, $this.data('countToOptions')||{});
   $this.countTo(options);
 }
+```
+
+### 6、侧边栏吸边
+侧边栏吸内容的边： 下面例子 #backtop 是侧边栏
+原理：（窗口宽度 - 内容块的宽度）/ 2 再减去 #backtop的宽度 就是 #backtop的right值
+
+![侧边栏吸边](https://raw.githubusercontent.com/ZHAO-Shaofeng/Related-considerations-for-HTML-CSS-JS/master/github-img/sidebar.jpg)
+
+```
+<style>
+#backtop{
+  position: fixed;
+  width: 110px;
+  bottom: 0;
+  opacity: 0;
+  z-index: 100;
+  transition: 0.3s;
+}
+#backtop.show{opacity: 1;}
+</style>
+
+window.onload = function() {
+  var _width = ($(window).width() - 1200)/2;
+      _width -= $("#backtop").width();
+      _width -= 8   //与内容块之间的距离
+      $("#backtop").css("right", _width);
+      $("#backtop").addClass("show");
+}
+$(window).resize(function(){
+    var _width = ($(window).width() - $(".container").width())/2;
+    _width -= $("#backtop").width();
+    _width -= 8
+    $("#backtop").css("right", _width);
+});
 ```
 
 ## Vue相关
