@@ -527,7 +527,7 @@ function count(options){
 </style>
 
 window.onload = function() {
-  var _width = ($(window).width() - 1200)/2;
+  var _width = ($(window).width() - $(".container").width())/2;
       _width -= $("#backtop").width();
       _width -= 8   //与内容块之间的距离
       $("#backtop").css("right", _width);
