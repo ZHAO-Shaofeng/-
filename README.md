@@ -508,6 +508,7 @@ function count(options){
 
 ### 6、侧边栏吸边
 侧边栏吸内容的边： 下面例子 #backtop 是侧边栏
+
 原理：（窗口宽度 - 内容块的宽度）/ 2 再减去 #backtop的宽度 就是 #backtop的right值
 
 ![侧边栏吸边](https://raw.githubusercontent.com/ZHAO-Shaofeng/Related-considerations-for-HTML-CSS-JS/master/github-img/sidebar.jpg)
