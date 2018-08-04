@@ -546,6 +546,7 @@ $(window).resize(function(){
 https://www.cnblogs.com/crazycode2/p/6535105.html
 
 ### 2、vue中常用图片上传。
+```
 changeImg(e) {
         let token = localStorage.getItem('token')
         let _this = this
@@ -601,3 +602,4 @@ changeImg(e) {
           }, 1000)
         }
       }
+```
