@@ -24,6 +24,7 @@
   6. [侧边栏吸边](#6侧边栏吸边)
 * #### [Vue相关](#vue相关-1)
   1. [使用sass](#1使用sass)
+  2. [vue数据便利后进行初始化](#2vue数据便利后进行初始化)
 
 ## 开发规范
 > 不管有多少人共同参与同一项目，一定要确保每一行代码都像是同一个人编写的。    
@@ -545,7 +546,19 @@ $(window).resize(function(){
 ### 1、使用sass
 https://www.cnblogs.com/crazycode2/p/6535105.html
 
-### 2、vue中常用图片上传。
+### 2、vue数据便利后进行初始化
+```
+that.$axios.get(url).then(function (res) {
+  that.rollingNew = res.data.content;
+  //重点。在$nextTick方法内进行初始化
+  that.$nextTick(() => {  // 下一个UI帧再初始化swiper
+    that.initSwiper();
+  });
+  console.log(that.rollingNew)
+})
+```
+
+### 3、vue中常用图片上传。
 ```
      changeImg(e) {
 	let token = localStorage.getItem('token')
