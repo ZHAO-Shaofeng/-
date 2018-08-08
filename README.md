@@ -617,3 +617,36 @@ that.$axios.get(url).then(function (res) {
 	}
      }
 ```
+### 4、vue中进行跨域代理及发布注意事项。
+#### 1.在config文件中的index.js里，不管dev(开发环境下)与build(发布环境下)都应加入以下代码：
+	```
+	proxyTable: {
+      	   '/api': {
+        	target: 'http://23.101.9.18:8090/apelink',
+         	secure: false,
+         	changeOrigin: true,
+        	pathRewrite: {
+          	    '^/api': '/'
+        	}
+      	    }
+    	},
+	```
+#### 2.在build文件夹中的webpack.prod.conf.js里，含义以下代码:
+	```
+	new OptimizeCSSPlugin({
+            cssProcessorOptions: config.build.productionSourceMap
+            ? { safe: true, map: { inline: false } }
+            : { safe: true }
+    	}),
+	```
+#### 此段代码需要注释掉，目前发现其对于-webkit-box-orient: vertical;会进行消除，
+#### 注意：注释掉此代码后，webpack不会对css进行压缩，所以要在utils.js文件里下面代码中加入minimize: true，如下：
+	```
+	const cssLoader = {
+    	    loader: 'css-loader',
+    	    options: {
+   	        sourceMap: options.sourceMap,
+   	        minimize: true
+   	    }
+ 	}
+	```
