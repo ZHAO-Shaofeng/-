@@ -22,10 +22,12 @@
   4. [锚链接平滑移动](#4锚链接平滑移动)
   5. [数字递增](#5数字递增)
   6. [侧边栏吸边](#6侧边栏吸边)
+  7. [AJAX请求](#7ajax请求)
 * #### [Vue相关](#vue相关-1)
   1. [使用sass](#1使用sass)
   2. [vue数据便利后进行初始化](#2vue数据便利后进行初始化)
-  2. [vue中常用图片上传](#3vue中常用图片上传)
+  3. [vue中常用图片上传](#3vue中常用图片上传)
+  4. [vue中进行跨域代理及发布注意事项。](#4vue中进行跨域代理及发布注意事项)
 
 ## 开发规范
 > 不管有多少人共同参与同一项目，一定要确保每一行代码都像是同一个人编写的。    
@@ -543,6 +545,31 @@ $(window).resize(function(){
 });
 ```
 
+### 7、AJAX请求
+```
+var json ={
+  mid: '123',
+  version_timestamp: '456'
+}
+$.ajax(function(){
+  url: '',
+  type: 'post',
+  dataType: 'json',
+  data: json,
+  beforeSend: function(){
+    $("body").append(bodymask);
+  },
+  success: function(res){
+    $(".bodymask").remove();
+    for(var i=0;i<res.Data.length;i++){
+      $('select[name="GetHotelList"]').append(
+        $('<option value="'+ res.Data[i].Id +'">'+res.Data[i].Name+'</option>')
+      )
+    }
+  }
+})
+```
+
 ## Vue相关
 ### 1、使用sass
 https://www.cnblogs.com/crazycode2/p/6535105.html
@@ -617,7 +644,7 @@ that.$axios.get(url).then(function (res) {
 	}
      }
 ```
-### 4、vue中进行跨域代理及发布注意事项。
+### 4、vue中进行跨域代理及发布注意事项
 #### 1.在config文件中的index.js里，不管dev(开发环境下)与build(发布环境下)都应加入以下代码：
 	```
 	proxyTable: {
