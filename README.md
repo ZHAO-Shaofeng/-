@@ -570,6 +570,31 @@ $.ajax(function(){
 })
 ```
 
+### 8、缓存相关操作
+```
+if(window.localStorage){
+  //存储名字为name值为caibin的变量
+  localStorage.setItem("name","caibin");
+
+  //读取保存在localStorage对象里名为name的变量的值
+  localStorage.getItem("name");
+
+  // 检查localStorage里是否保存某个变量
+  localStorage.hasOwnProperty('name'); // true false
+
+  // 清空localStorage
+  localStorage.clear();
+｝
+```
+#### 对象类型转为包含JSON文本的字符串类型
+```
+SignPointList_Data = JSON.stringify(res.Data);
+```
+#### 转为JSON
+```
+SignPointList_Data = JSON.parse(SignPointList_Data);
+```
+
 ## Vue相关
 ### 1、使用sass
 https://www.cnblogs.com/crazycode2/p/6535105.html
@@ -589,57 +614,57 @@ that.$axios.get(url).then(function (res) {
 ### 3、vue中常用图片上传。
 ```
 changeImg(e) {
-	let token = localStorage.getItem('token')
-	let _this = this
-	let imgLimit = 1024
-	let files = e.target.files
-	let image = new Image()
-	if (files.length > 0) {
-	  let dd = 0
-	  let timer = setInterval(function () {
-	    if (files.item(dd).type !== 'image/png' && files.item(dd).type !== 'image/jpeg' && files.item(dd).type !== 'image/gif') {
-	      return false
-	    }
-	    if (files.item(dd).size > imgLimit * 102400) {
-	    } else {
-	      image.src = window.URL.createObjectURL(files.item(dd))
-	      image.onload = function () {
-		// 默认按比例压缩
-		let w = image.width
-		let h = image.height
-		let scale = w / h
-		w = 200
-		h = w / scale
-		// 默认图片质量为0.7，quality值越小，所绘制出的图像越模糊
-		let quality = 0.7
-		let canvas = document.createElement('canvas')
-		let ctx = canvas.getContext('2d')
-		// 创建属性节点
-		let anw = document.createAttribute('width')
-		anw.nodeValue = w
-		let anh = document.createAttribute('height')
-		anh.nodeValue = h
-		canvas.setAttributeNode(anw)
-		canvas.setAttributeNode(anh)
-		ctx.drawImage(image, 0, 0, w, h)
-		let ext = image.src.substring(image.src.lastIndexOf('.') + 1).toLowerCase()
-		let base64 = canvas.toDataURL('image/' + ext, quality)
-		if (_this.user.profileUrl !== null || _this.user.profileUrl !== undefined || _this.user.profileUrl !== '') {
-		  _this.user.profileUrl = base64
-		  //以上部分进行图片转换为base64
+  let token = localStorage.getItem('token')
+  let _this = this
+  let imgLimit = 1024
+  let files = e.target.files
+  let image = new Image()
+  if (files.length > 0) {
+    let dd = 0
+    let timer = setInterval(function () {
+      if (files.item(dd).type !== 'image/png' && files.item(dd).type !== 'image/jpeg' && files.item(dd).type !== 'image/gif') {
+        return false
+      }
+      if (files.item(dd).size > imgLimit * 102400) {
+      } else {
+        image.src = window.URL.createObjectURL(files.item(dd))
+        image.onload = function () {
+          // 默认按比例压缩
+          let w = image.width
+          let h = image.height
+          let scale = w / h
+          w = 200
+          h = w / scale
+          // 默认图片质量为0.7，quality值越小，所绘制出的图像越模糊
+          let quality = 0.7
+          let canvas = document.createElement('canvas')
+          let ctx = canvas.getContext('2d')
+          // 创建属性节点
+          let anw = document.createAttribute('width')
+          anw.nodeValue = w
+          let anh = document.createAttribute('height')
+          anh.nodeValue = h
+          canvas.setAttributeNode(anw)
+          canvas.setAttributeNode(anh)
+          ctx.drawImage(image, 0, 0, w, h)
+          let ext = image.src.substring(image.src.lastIndexOf('.') + 1).toLowerCase()
+          let base64 = canvas.toDataURL('image/' + ext, quality)
+          if (_this.user.profileUrl !== null || _this.user.profileUrl !== undefined || _this.user.profileUrl !== '') {
+            _this.user.profileUrl = base64
+            //以上部分进行图片转换为base64
 
-		  //下面进行base64上传
-		  .....
-		  .....
-		  .....
-		}
-	      }
-	    }
-	    if (dd < files.length - 1) {
-	      dd++
-	    } else {
-	      clearInterval(timer)
-	    }
+            //下面进行base64上传
+            .....
+            .....
+            .....
+          }
+        }
+      }
+      if (dd < files.length - 1) {
+        dd++
+      } else {
+        clearInterval(timer)
+      }
 	  }, 1000)
 	}
 }
@@ -649,12 +674,12 @@ changeImg(e) {
 ```
 proxyTable: {
   '/api': {
-  	target: 'http://23.101.9.18:8090/apelink',
-   	secure: false,
-   	changeOrigin: true,
+    target: 'http://23.101.9.18:8090/apelink',
+    secure: false,
+    changeOrigin: true,
   	pathRewrite: {
-    	    '^/api': '/'
-  	}
+      '^/api': '/'
+    }
   }
 },
 ```
