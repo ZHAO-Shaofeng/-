@@ -665,8 +665,8 @@ changeImg(e) {
       } else {
         clearInterval(timer)
       }
-	  }, 1000)
-	}
+    }, 1000)
+  }
 }
 ```
 ### 4、vue中进行跨域代理及发布注意事项
