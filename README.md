@@ -702,3 +702,11 @@ const cssLoader = {
   }
 }
 ```
+
+### 5、使用material-icons
+> $ npm install material-design-icons
+
+main.js全局引入
+```
+import 'material-design-icons/iconfont/material-icons.css'
+```
