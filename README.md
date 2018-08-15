@@ -23,6 +23,8 @@
   5. [数字递增](#5数字递增)
   6. [侧边栏吸边](#6侧边栏吸边)
   7. [AJAX请求](#7ajax请求)
+  7. [缓存相关操作](#8缓存相关操作)
+  7. [页面向下滚动头部加阴影](#9页面向下滚动头部加阴影)
 * #### [Vue相关](#vue相关-1)
   1. [使用sass](#1使用sass)
   2. [vue数据便利后进行初始化](#2vue数据便利后进行初始化)
@@ -594,6 +596,17 @@ SignPointList_Data = JSON.stringify(res.Data);
 #### 转为JSON
 ```
 SignPointList_Data = JSON.parse(SignPointList_Data);
+```
+
+### 9、页面向下滚动头部加阴影
+```
+$(window).scroll(function(){
+  if ($(document).scrollTop() > 0) {
+    $('.header').addClass("shadow");
+  } else {
+    $('.header').removeClass("shadow");
+  }
+});
 ```
 
 ## Vue相关
