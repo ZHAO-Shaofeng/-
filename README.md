@@ -600,6 +600,11 @@ SignPointList_Data = JSON.parse(SignPointList_Data);
 
 ### 9、页面向下滚动头部加阴影
 ```
+.shadow {
+  box-shadow: 0 0 5px 0 #aaa;
+}
+
+
 $(window).scroll(function(){
   if ($(document).scrollTop() > 0) {
     $('.header').addClass("shadow");
