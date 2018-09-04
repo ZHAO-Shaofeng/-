@@ -15,6 +15,7 @@
   10. [重置样式](#10重置样式)
   11. [div内容垂直布局](#11div垂直布局)
   12. [input框在ios中的内阴影问题](#12input框在ios中的内阴影问题)
+  13. [flex制作栅格布局](#13flex制作栅格布局)
 * #### [JS相关](#js相关-1)
   1. [获取URL参数值](#1获取url参数值)
   2. [头部提取之后，导航跳转添加对应的active ](#2头部提取之后导航跳转添加对应的active)
@@ -305,6 +306,49 @@ vertical-align: middle;
 ### 12、input框在ios中的内阴影问题
 ```
 -webkit-appearance: none;
+```
+
+### 13、flex制作栅格布局
+```
+flexbox
+┌─────────────────────────────┐
+│                             │
+│  box-row                    │
+│ ┌─────────────────────────┐ │
+│ │                         │ │
+│ │ box-col                 │ │
+│ │ ┌───┐ ┌───┐ ┌───┐ ┌───┐ │ │
+│ │ │ 3 │ │ 3 │ │ 3 │ │ 3 │ │ │
+│ │ └───┘ └───┘ └───┘ └───┘ │ │
+│ └─────────────────────────┘ │
+└─────────────────────────────┘
+
+<div class="flexbox">
+  <div class="box-row">
+    <div class="box-col"> 3 </div>
+    <div class="box-col"> 3 </div>
+    <div class="box-col"> 3 </div>
+    <div class="box-col"> 3 </div>
+  </div>
+</div>
+
+.flexbox{
+  overflow: hidden;
+
+  .box-row{
+    margin: 0 -10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .box-col{
+    flex: 0 0 25%;
+    min-width: 25%;
+    padding: 0 10px;
+    margin: 0 0 15px;
+  }
+}
 ```
 
 ## JS相关
