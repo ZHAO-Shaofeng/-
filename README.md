@@ -15,7 +15,8 @@
   10. [重置样式](#10重置样式)
   11. [div内容垂直布局](#11div垂直布局)
   12. [input框在ios中的内阴影问题](#12input框在ios中的内阴影问题)
-  13. [flex制作栅格布局](#13flex制作栅格布局)
+  13. [去掉ios下可点元素的灰色块](#13去掉ios下可点元素的灰色块)
+  14. [flex制作栅格布局](#14flex制作栅格布局)
 * #### [JS相关](#js相关-1)
   1. [获取URL参数值](#1获取url参数值)
   2. [头部提取之后，导航跳转添加对应的active ](#2头部提取之后导航跳转添加对应的active)
@@ -303,12 +304,17 @@ display: table-cell;
 vertical-align: middle;
 ```
 
-### 12、input框在ios中的内阴影问题
+### 12、input框在ios下的内阴影问题
 ```
 -webkit-appearance: none;
 ```
 
-### 13、flex制作栅格布局
+### 13、去掉ios下可点元素的灰色块
+```
+-webkit-tap-highlight-color: transparent;
+```
+
+### 14、flex制作栅格布局
 ```
 flexbox
 ┌─────────────────────────────┐
