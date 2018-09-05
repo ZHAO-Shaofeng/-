@@ -345,7 +345,7 @@ flexbox
     margin: 0 -10px;
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
+    // align-items: flex-start;
   }
 
   .box-col{
