@@ -609,6 +609,7 @@ $.ajax(function(){
   type: 'post',
   dataType: 'json',
   data: json,
+  contentType: 'application/json; charset=utf-8',
   beforeSend: function(){
     $("body").append(bodymask);
   },
