@@ -33,6 +33,7 @@
   3. [vue中常用图片上传](#3vue中常用图片上传)
   4. [vue中进行跨域代理及发布注意事项](#4vue中进行跨域代理及发布注意事项)
   5. [使用material-icons](#5使用material-icons)
+  6. [监听滚动条到底部](#6监听滚动条到底部)
 
 ## 开发规范
 > 不管有多少人共同参与同一项目，一定要确保每一行代码都像是同一个人编写的。    
@@ -798,7 +799,40 @@ main.js全局引入
 import 'material-design-icons/iconfont/material-icons.css'
 ```
 
+### 6、监听滚动条到底部
+```
+created(){
+  window.onscroll = function(){
+    //变量scrollTop是滚动条滚动时，距离顶部的距离
+    var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+    //变量windowHeight是可视区的高度
+    var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+    //变量scrollHeight是滚动条的总高度
+    var scrollHeight = document.documentElement.scrollHeight||document.body.scrollHeight;
+    //滚动条到底部的条件
+    if(scrollTop+windowHeight==scrollHeight){
+      //写后台加载数据的函数
+      console.log("距顶部"+scrollTop+"可视区高度"+windowHeight+"滚动条总高度"+scrollHeight);
+    }   
+  }
+}
+```
 
+或者是用div内滚动
+```
+<div v-on:scroll.passive="onScroll" ref="page">
+  ......
+</div>
+
+onScroll () {
+  var scrollTop = this.$refs.page.scrollTop || this.$refs.page.scrollTop;
+  var windowHeight = this.$refs.page.clientHeight || this.$refs.page.clientHeight;
+  var scrollHeight = this.$refs.page.scrollHeight || this.$refs.page.scrollHeight;
+  if(scrollTop+windowHeight==scrollHeight){
+    请求数据......
+  }   
+}
+```
 
 
 ### 
