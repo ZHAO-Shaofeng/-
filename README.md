@@ -34,6 +34,8 @@
   4. [vue中进行跨域代理及发布注意事项](#4vue中进行跨域代理及发布注意事项)
   5. [使用material-icons](#5使用material-icons)
   6. [监听滚动条到底部](#6监听滚动条到底部)
+  6. [关于Vue打包之后文件路径出错的问题](#7关于Vue打包之后文件路径出错的问题)
+
 
 ## 开发规范
 > 不管有多少人共同参与同一项目，一定要确保每一行代码都像是同一个人编写的。    
@@ -834,6 +836,25 @@ onScroll () {
   }   
 }
 ```
+
+### 7、关于Vue打包之后文件路径出错的问题
+#### 1.文件路径不对
+找到config文件夹下的index.js文件修改一下位置;
+
+![文件路径不对](https://raw.githubusercontent.com/ZHAO-Shaofeng/Related-considerations-for-HTML-CSS-JS/master/github-img/vue1.png)
+
+ build（上边还有个dev 是开发环境下的配置，不需要改动）下的 assetsPublicPath ：将'/'改为'./'
+
+#### 2.背景图片路径不对
+
+css中写的background-img的路径出错 需要找到build文件夹下的utils.js,修改一下位置
+
+![背景图片路径不对](https://raw.githubusercontent.com/ZHAO-Shaofeng/Related-considerations-for-HTML-CSS-JS/master/github-img/vue2.png)
+
+加入红框内字段即可
+
+
+
 
 
 ### 
