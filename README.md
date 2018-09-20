@@ -607,7 +607,7 @@ var json ={
   mid: '123',
   version_timestamp: '456'
 }
-$.ajax(function(){
+$.ajax({
   url: '',
   type: 'post',
   dataType: 'json',
