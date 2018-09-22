@@ -827,9 +827,9 @@ created(){
 </div>
 
 onScroll () {
-  var scrollTop = this.$refs.page.scrollTop || this.$refs.page.scrollTop;
-  var windowHeight = this.$refs.page.clientHeight || this.$refs.page.clientHeight;
-  var scrollHeight = this.$refs.page.scrollHeight || this.$refs.page.scrollHeight;
+  var scrollTop = this.$refs.page.scrollTop;
+  var windowHeight = this.$refs.page.clientHeight;
+  var scrollHeight = this.$refs.page.scrollHeight;
   if(scrollTop+windowHeight==scrollHeight){
     请求数据......
   }   
