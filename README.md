@@ -820,18 +820,28 @@ created(){
 }
 ```
 
-或者是用div内滚动
+或者是用div内滚动到90%
 ```
 <div v-on:scroll.passive="onScroll" ref="page">
   ......
 </div>
 
+data () {
+  return {
+    finish: true
+  }
+}
+
 onScroll () {
   var scrollTop = this.$refs.page.scrollTop;
   var windowHeight = this.$refs.page.clientHeight;
   var scrollHeight = this.$refs.page.scrollHeight;
-  if(scrollTop+windowHeight==scrollHeight){
-    请求数据......
+  if((scrollTop / (scrollHeight - windowHeight) >= 0.9) && this.finish){
+    this.finish = false
+    this.$axios.post(url).then(res = > {
+      ...
+      this.finish = true
+    })
   }   
 }
 ```
