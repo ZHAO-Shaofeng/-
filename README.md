@@ -34,7 +34,8 @@
   4. [vue中进行跨域代理及发布注意事项](#4vue中进行跨域代理及发布注意事项)
   5. [使用material-icons](#5使用material-icons)
   6. [监听滚动条到底部](#6监听滚动条到底部)
-  6. [关于Vue打包之后文件路径出错的问题](#7关于vue打包之后文件路径出错的问题)
+  7. [关于Vue打包之后文件路径出错的问题](#7关于vue打包之后文件路径出错的问题)
+  8. [使用jquery](#8使用jquery)
 
 
 ## 开发规范
@@ -864,9 +865,61 @@ css中写的background-img的路径出错 需要找到build文件夹下的utils.
 
 加入红框内字段即可
 
+### 8、使用jquery
 
+>cnpm install jquery --save
 
+在项目根目录下的build目录下找到**webpack.base.conf.js**文件，在开头使用以下代码引入webpack，因为该文件默认没有引用
 
+```
+var webpack = require('webpack')
+```
+
+**然后在module.exports中添加一段代码**
+
+```
+// 原有代码
+resolve: {
+  extensions: ['.js', '.vue', '.json'],
+  alias: {
+'vue$': 'vue/dist/vue.esm.js',
+'@': resolve('src')
+  }
+},
+// 添加代码+++++++++++++++
+plugins: [
+  new webpack.ProvidePlugin({
+    $: "jquery",
+    jQuery: "jquery",
+    jquery: "jquery",
+    "window.jQuery": "jquery"
+  })
+],
++++++++++++++++++++++++++
+// 原有代码
+module: {
+  rules: [
+// ......
+  ]
+}
+```
+
+最后在main.js里导入，然后重跑一下项目
+
+```
+import 'jquery'
+```
+
+如果有 eslint 检查报错，改文件的module.exports中，为env添加一个键值对 jquery: true 就可以了
+
+```
+env: {
+  // 原有
+  browser: true,
+  // 添加
+  jquery: true
+}
+```
 
 ### 
 
