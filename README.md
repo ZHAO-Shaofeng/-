@@ -672,6 +672,7 @@ $(window).scroll(function(){
 来源： https://www.cnblogs.com/crazycode2/p/6535105.html
 
 >cnpm install --save-dev sass-loader style-loader css-loader
+
 >cnpm install node-sass --save-dev
 
 打开webpack.base.config.js在loaders里面加上  module -- rules
