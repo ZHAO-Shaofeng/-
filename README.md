@@ -11,7 +11,7 @@
   6. [flex页脚置底(兼容至ie10)](#6flex页脚置底兼容至ie10)
   7. [css三角形](#7css三角形)
   8. [tab常用响应式不转行，可左右拉动](#8tab常用响应式不转行可左右拉动)
-  9. [让背景图随DIV变化，且不变形居中](#9让背景图随div变化且不变形居中)
+  9. [让背景图随DIV变化，且居中不变形](#9让背景图随div变化且居中不变形)
   10. [重置样式](#10重置样式)
   11. [div内容垂直布局](#11div垂直布局)
   12. [input框在ios中的内阴影问题](#12input框在ios中的内阴影问题)
@@ -29,7 +29,7 @@
   9. [页面向下滚动头部加阴影](#9页面向下滚动头部加阴影)
 * #### [Vue相关](#vue相关-1)
   1. [使用sass](#1使用sass)
-  2. [vue数据便利后进行初始化](#2vue数据便利后进行初始化)
+  2. [vue数据遍历后进行初始化](#2vue数据遍历后进行初始化)
   3. [vue中常用图片上传](#3vue中常用图片上传)
   4. [vue中进行跨域代理及发布注意事项](#4vue中进行跨域代理及发布注意事项)
   5. [使用material-icons](#5使用material-icons)
@@ -65,7 +65,7 @@
 
 
 ## HTML head
-```
+```html
 <meta charset="UTF-8">
 <!-- 设置文档宽度、是否缩放 -->
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -124,7 +124,11 @@
 
 ## CSS相关
 ### 1、编写CSS规范
-一个项目不可能从头到尾都是你一个人在开发，哪怕是一个很小的项目，如果每个人都把规范做到极致，所有事情都会变得更简单。在我遇到的大部分开发中，用Git合并项目时，遇到最多的冲突就是样式表用来用去不知道在用谁的，改来改去还不好改；如果我们把样式拆分成模块会方便很多，这样出了问题一看就知道是谁的锅了，譬如在用Less的时候：
+不管项目是不是自己一个人独立开发，我们都应该去规范自己的代码，哪怕是一个很小的项目，如果每个人都把规范做到极致，所有事情都会变得更简单。
+
+在我以往遇到的大部分开发中，用Git合并项目时，遇到最多的冲突就是样式表用来用去不知道在用谁的，改来改去还不好改，特别是开发人员还不坐在一起开发的时候；
+
+如果我们把样式拆分成模块会方便很多，下面是一些例子，譬如在用Less的时候：
 
 ![Less目录](https://raw.githubusercontent.com/ZHAO-Shaofeng/Related-considerations-for-HTML-CSS-JS/master/github-img/mulu.png)
 
@@ -134,37 +138,43 @@
 
 ![全局变量](https://raw.githubusercontent.com/ZHAO-Shaofeng/Related-considerations-for-HTML-CSS-JS/master/github-img/variable.png)
 
-然后再把所有的文件引入到style.less
+然后再把所有的文件引入到main.less
 
 ![整合less](https://raw.githubusercontent.com/ZHAO-Shaofeng/Related-considerations-for-HTML-CSS-JS/master/github-img/style.png)
 
-哪怕你是用的原生css来写，如果在class上写明哪个文件并添加注释之后，不觉得这样看起来更清晰吗
+当然预编译处理的样式表文件需要配合webpack这样的打包工具才能更加高效的发挥它的作用，整合并压缩资源文件等
+
+就算是用的原生css来写，如果在class上写明哪个文件并添加注释之后，不觉得这样看起来更清晰吗
 
 ![原生css](https://raw.githubusercontent.com/ZHAO-Shaofeng/Related-considerations-for-HTML-CSS-JS/master/github-img/css.png)
 
-只是用Less举个例子想把规范说清楚，至于用原生css还是用css的预编译处理语言这里不作讨论
+只是用Less举个例子想把方法说清楚，至于用原生css还是用css的预编译处理语言这里不作讨论
 
 但是显然用预编译处理语言在开发和贴近规范上会更方便一些，这是推荐使用的。    
 如果我们的样式表都是通过嵌套规则来一个个继承的，不管你用哪个都不会有任何冲突，因为彼此之间的关系是很清晰的。
 
 ### 2、单行溢出省略号
-```
-overflow: hidden;
-text-overflow: ellipsis;
-white-space: nowrap;
+```css
+.demo{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 ```
 
 ### 3、多行溢出省略号
-```
-overflow : hidden;
-text-overflow: ellipsis;
-display: -webkit-box;
--webkit-line-clamp: 2;
--webkit-box-orient: vertical;
+```css
+.demo{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
 ```
 
 ### 4、placeholder样式
-```
+```css
 input::-webkit-input-placeholder{
   color:red;
 }
@@ -181,38 +191,49 @@ input:-ms-input-placeholder{
  
 ### 5、渐变
 *  从上到下
-```
-background: -webkit-linear-gradient(red, blue);
-background: -o-linear-gradient(red, blue);
-background: -moz-linear-gradient(red, blue);
-background: linear-gradient(red, blue);
+```css
+.demo{
+  background: -webkit-linear-gradient(red, blue);
+  background: -o-linear-gradient(red, blue);
+  background: -moz-linear-gradient(red, blue);
+  background: linear-gradient(red, blue);
+}
 ```
  
 *  从左到右
-```
-background: linear-gradient(to right, red , blue);
+```css
+.demo{
+  background: linear-gradient(to right, red , blue);
+}
 ```
  
 *  角度
-```
-background: linear-gradient(to bottom right, red , blue);  /*左上角至右下角*/
-background: linear-gradient(180deg, red, blue);  /*指定角度*/
+```css
+.demo{
+  background: linear-gradient(to bottom right, red , blue);  /*左上角至右下角*/
+  background: linear-gradient(180deg, red, blue);  /*指定角度*/
+}
 ```
  
 *  多个颜色
-```
-background: linear-gradient(red, green, blue);
+```css
+.demo{
+  background: linear-gradient(red, green, blue);
+}
 ```
  
 ### 6、flex页脚置底(兼容至ie10)
-```
+```html
 <body>
-    <header></header>
-    <main></main>
-    <footer></footer>
+  <header></header>
+  <main></main>
+  <footer></footer>
 </body>
-
-html{height: 100%;}
+```
+```css
+html{
+  height: 100%;
+}
 body{
 	height: 100%;
 	min-height: 100%;
@@ -232,26 +253,29 @@ body{
 
 ### 8、tab常用响应式不转行，可左右拉动
 放在容器里的样式
-```
-white-space: nowrap;
-overflow-x: auto;
-display: flex;
-overflow-y: hidden;
+```css
+.demo{
+  white-space: nowrap;
+  overflow-x: auto;
+  display: flex;
+  overflow-y: hidden;
+}
 ```
 
-### 9、让背景图随DIV变化，且不变形居中
-让背景图随DIV变化，且不变形居中。
-```
-background-image: url("../images/index/banner.png");
-background-repeat: no-repeat;
-background-size: cover;
-background-attachment: fixed;
-background-position: center center;
+### 9、让背景图随DIV变化，且居中不变形
+```css
+.demo{
+  background-image: url("../images/index/banner.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+}
 ```
 
 ### 10、重置样式
 参考网站：https://meyerweb.com/eric/tools/css/reset/index.html
-```
+```css
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -303,36 +327,38 @@ table {
 ```
 
 ### 11、div垂直布局
-```
-display: table-cell;
-vertical-align: middle;
+```css
+.demo{
+  display: table-cell;
+  vertical-align: middle;
+}
 ```
 
 ### 12、input框在ios下的内阴影问题
-```
--webkit-appearance: none;
+```css
+input{
+  -webkit-appearance: none;
+}
 ```
 
 ### 13、去掉ios下可点元素的灰色块
-```
--webkit-tap-highlight-color: transparent;
+```css
+.demo{
+  -webkit-tap-highlight-color: transparent;
+}
 ```
 
 ### 14、flex制作栅格布局
 ```
-flexbox
-┌─────────────────────────────┐
-│                             │
-│  box-row                    │
-│ ┌─────────────────────────┐ │
-│ │                         │ │
-│ │ box-col                 │ │
-│ │ ┌───┐ ┌───┐ ┌───┐ ┌───┐ │ │
+┌─flexbox─────────────────────┐
+│ ┌─box-row─────────────────┐ │
+│ │ ┌─box-col─┐ ┌───┐ ┌───┐ │ │
 │ │ │ 3 │ │ 3 │ │ 3 │ │ 3 │ │ │
 │ │ └───┘ └───┘ └───┘ └───┘ │ │
 │ └─────────────────────────┘ │
 └─────────────────────────────┘
-
+```
+```html
 <div class="flexbox">
   <div class="box-row">
     <div class="box-col"> 3 </div>
@@ -341,17 +367,16 @@ flexbox
     <div class="box-col"> 3 </div>
   </div>
 </div>
-
+```
+```scss
 .flexbox{
   overflow: hidden;
-
   .box-row{
     margin: 0 -10px;
     display: flex;
     flex-wrap: wrap;
     // align-items: flex-start;
   }
-
   .box-col{
     flex: 0 0 25%;
     min-width: 25%;
@@ -361,20 +386,91 @@ flexbox
 }
 ```
 
+### 15、关于移动端下的布局
+**在布局上不建议使用position: fixed来达到固定的效果，谁用谁知道，反正我怕了**
+
+其他情况还好，慢慢摸索吧
+
+```
+┌─page──────────────────────────┐
+│ ┌─header────────────────────┐ │
+│ │ <          ---          + │ │
+│ └───────────────────────────┘ │
+│ ┌─page-content──────────────┐ │
+│ │                           │ │
+│ │ ...                       │ │
+│ │                           │ │
+│ │                           │ │
+│ │                           │ │
+│ │                           │ │
+│ ┌─tabbar──────┬──────┬──────┐ │
+│ │  --  │  --  │  --  │  --  │ │
+│ └──────┴──────┴──────┴──────┘ │
+└───────────────────────────────┘
+```
+```html
+<div class="page">
+  <div class="header"></div>
+  <div class="page-contenr">
+    ...
+  </div>
+  <div class="tabbar"></div>
+</div>
+```
+```css
+.page{
+  position: absolute;
+  z-index: 100;
+  background-color: #f5f5f5;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+}
+.header{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  z-index: 100;
+}
+.page-content{
+  padding: 50px 0;
+  height: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling:touch;
+}
+.tabbar{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 100;
+}
+```
+
 ## JS相关
 ### 1、获取URL参数值
 获取URL的参数的值。
-```
+```js
 function getQueryString(name) {
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-    var r = window.location.search.substr(1).match(reg);
-    if (r != null) return unescape(r[2]); return null;
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+  var r = window.location.search.substr(1).match(reg);
+  if (r != null) return unescape(r[2]); return null;
 }
 ```
 
 ### 2、头部提取之后，导航跳转添加对应的active
 添加到提取的header.html中
-```
+```js
 $(".navbar-nav a").each(function(){
   $this = $(this);
   if($this[0].href==String(window.location)){
@@ -385,158 +481,160 @@ $(".navbar-nav a").each(function(){
 ```
 
 ### 3、swiper常用参数
-```
+```html
 <div class="swiper-container">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide">Slide 1</div>
-        <div class="swiper-slide">Slide 2</div>
-        <div class="swiper-slide">Slide 3</div>
-    </div>
-    <!-- 如果需要分页器 -->
-    <div class="swiper-pagination"></div>
-    
-    <!-- 如果需要导航按钮 -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-    
-    <!-- 如果需要滚动条 -->
-    <div class="swiper-scrollbar"></div>
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">Slide 1</div>
+    <div class="swiper-slide">Slide 2</div>
+    <div class="swiper-slide">Slide 3</div>
+  </div>
+  <!-- 如果需要分页器 -->
+  <div class="swiper-pagination"></div>
+  
+  <!-- 如果需要导航按钮 -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+  
+  <!-- 如果需要滚动条 -->
+  <div class="swiper-scrollbar"></div>
 </div>
-
+```
+```js
 var Swiper1 = new Swiper('.swiper-container', {
-    autoplay: {		                //自动播放
-        delay: 1000,	            //间隔时间
-        disableOnInteraction: false,	//用户操作swiper之后，是否禁止autoplay。
+  autoplay: {                     //自动播放
+    delay: 3000,                  //间隔时间
+    disableOnInteraction: false,  //用户操作swiper之后，是否禁止autoplay。
+  },
+  slidesPerView: 4,               //一屏显示多少个
+  slidesPerColumn: 2,             //显示2行
+  spaceBetween: 30,               //每个之间的间距
+  noSwiping : true,               //使该slide无法拖动，希望文字被选中时可以考虑使用
+  noSwipingClass : 'no-swiper',
+  centeredSlides : true,          //居中显示
+  loop: true,                     //头尾循环
+  observer: true,                 //修改swiper自己或子元素时，自动初始化swiper 
+  observeParents: true,           //修改swiper的父元素时，自动初始化swiper 
+  pagination: {                   //分页器
+    el: '.swiper-pagination',
+    clickable :true               //允许点击分页器切换
+  },
+  navigation: {                   //前进后退按钮
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev'
+  },
+  breakpoints: {                  //响应式设置
+    1200: {
+      slidesPerView: 4,
+      spaceBetween: 35
     },
-    slidesPerView: 4,	            //一屏显示多少个
-    slidesPerColumn: 2,	          //显示2行
-    spaceBetween: 30,	            //每个之间的间距
-    noSwiping : true,	            //使该slide无法拖动，希望文字被选中时可以考虑使用
-    noSwipingClass : 'no-swiper',
-    centeredSlides : true,	      //居中显示
-    loop: true,		                //头尾循环
-    observer: true,		            //修改swiper自己或子元素时，自动初始化swiper 
-    observeParents: true,	        //修改swiper的父元素时，自动初始化swiper 
-    pagination: {		              //分页器
-        el: '.swiper-pagination',
-        clickable :true         	//允许点击分页器切换
+    992: {
+      slidesPerView: 3,
+      spaceBetween: 35
     },
-    navigation: {		              //前进后退按钮
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 35
     },
-    breakpoints: {		            //响应式设置
-        1200: {
-          slidesPerView: 4,
-          spaceBetween: 35
-        },
-        992: {
-          slidesPerView: 3,
-          spaceBetween: 35
-        },
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 35
-        },
-        400: {
-          slidesPerView: 1,
-          spaceBetween: 35
-        }
+    400: {
+      slidesPerView: 1,
+      spaceBetween: 35
     }
+  }
 })
 ```
 
 ### 4、锚链接平滑移动
-```
+```js
 $('.navbar-nav a[href*=#]').click(function() {  
-    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {  
-        var $target = $(this.hash);  
-        $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');  
-        if ($target.length) {  
-            var targetOffset = $target.offset().top;  
-            $('html,body').animate({  
-                scrollTop: targetOffset  
-            },700);  
-            return false;  
-        }  
-    }  
+  if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {  
+      var $target = $(this.hash);  
+      $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');  
+      if ($target.length) {  
+        var targetOffset = $target.offset().top;  
+        $('html,body').animate({  
+          scrollTop: targetOffset  
+        },700);  
+        return false;  
+      }  
+  }  
 });
 ```
 
 ### 5、数字递增
-```
+```html
 <div id="id">
-    <p class="incrementing" data-to="20" data-speed="1500">10</p>
+  <p class="incrementing" data-to="100" data-speed="1500">100</p>
 </div>
-
+```
+```js
 //数字递增
 var wrapTop = $("#id").offset().top;
 var istrue = true;
 $(window).on("scroll",
 function() {
-    var s = $(window).scrollTop();
-    if (s > wrapTop - 600 && istrue) {
-        $(".incrementing").each(count);
-        function count(a) {
-            var b = $(this);
-            a = $.extend({},
-            a || {},
-            b.data("countToOptions") || {});
-            b.countTo(a)
-        };
-        istrue = false;
+  var s = $(window).scrollTop();
+  if (s > wrapTop - 600 && istrue) {
+    $(".incrementing").each(count);
+    function count(a) {
+      var b = $(this);
+      a = $.extend({},
+      a || {},
+      b.data("countToOptions") || {});
+      b.countTo(a)
     };
+    istrue = false;
+  };
 })
 //设置计数
 $.fn.countTo = function (options) {
   options = options || {};
   return $(this).each(function () {
-  //当前元素的选项
-  var settings = $.extend({}, $.fn.countTo.defaults, {
-    from:            $(this).data('from'),
-    to:              $(this).data('to'),
-    speed:           $(this).data('speed'),
-    refreshInterval: $(this).data('refresh-interval'),
-    decimals:        $(this).data('decimals')
-  }, options);
-  //更新值
-  var loops = Math.ceil(settings.speed / settings.refreshInterval),
-      increment = (settings.to - settings.from) / loops;
-  //更改应用和变量
-  var self = this,
-  $self = $(this),
-  loopCount = 0,
-  value = settings.from,
-  data = $self.data('countTo') || {};
-  $self.data('countTo', data);
-  //如果有间断，找到并清除
-  if (data.interval) {
-    clearInterval(data.interval);
-  };
-  data.interval = setInterval(updateTimer, settings.refreshInterval);
-  //初始化起始值
-  render(value);
-  function updateTimer() {
-    value += increment;
-    loopCount++;
-    render(value);
-    if (typeof(settings.onUpdate) == 'function') {
-      settings.onUpdate.call(self, value);
-    }
-    if (loopCount >= loops) {
-      //移出间隔
-      $self.removeData('countTo');
+    //当前元素的选项
+    var settings = $.extend({}, $.fn.countTo.defaults, {
+      from:            $(this).data('from'),
+      to:              $(this).data('to'),
+      speed:           $(this).data('speed'),
+      refreshInterval: $(this).data('refresh-interval'),
+      decimals:        $(this).data('decimals')
+    }, options);
+    //更新值
+    var loops = Math.ceil(settings.speed / settings.refreshInterval),
+        increment = (settings.to - settings.from) / loops;
+    //更改应用和变量
+    var self = this,
+    $self = $(this),
+    loopCount = 0,
+    value = settings.from,
+    data = $self.data('countTo') || {};
+    $self.data('countTo', data);
+    //如果有间断，找到并清除
+    if (data.interval) {
       clearInterval(data.interval);
-      value = settings.to;
-      if (typeof(settings.onComplete) == 'function') {
-        settings.onComplete.call(self, value);
+    };
+    data.interval = setInterval(updateTimer, settings.refreshInterval);
+    //初始化起始值
+    render(value);
+    function updateTimer() {
+      value += increment;
+      loopCount++;
+      render(value);
+      if (typeof(settings.onUpdate) == 'function') {
+        settings.onUpdate.call(self, value);
+      }
+      if (loopCount >= loops) {
+        //移出间隔
+        $self.removeData('countTo');
+        clearInterval(data.interval);
+        value = settings.to;
+        if (typeof(settings.onComplete) == 'function') {
+          settings.onComplete.call(self, value);
+        }
       }
     }
-  }
-  function render(value) {
-    var formattedValue = settings.formatter.call(self, value, settings);
-    $self.html(formattedValue);
-  }
+    function render(value) {
+      var formattedValue = settings.formatter.call(self, value, settings);
+      $self.html(formattedValue);
+    }
   });
 };
 $.fn.countTo.defaults={
@@ -574,8 +672,7 @@ function count(options){
 
 ![侧边栏吸边](https://raw.githubusercontent.com/ZHAO-Shaofeng/Related-considerations-for-HTML-CSS-JS/master/github-img/sidebar.jpg)
 
-```
-<style>
+```css
 #backtop{
   position: fixed;
   width: 110px;
@@ -585,8 +682,8 @@ function count(options){
   transition: 0.3s;
 }
 #backtop.show{opacity: 1;}
-</style>
-
+```
+```js
 window.onload = function() {
   var _width = ($(window).width() - $(".container").width())/2;
       _width -= $("#backtop").width();
@@ -595,15 +692,15 @@ window.onload = function() {
       $("#backtop").addClass("show");
 }
 $(window).resize(function(){
-    var _width = ($(window).width() - $(".container").width())/2;
-    _width -= $("#backtop").width();
-    _width -= 8
-    $("#backtop").css("right", _width);
+  var _width = ($(window).width() - $(".container").width())/2;
+  _width -= $("#backtop").width();
+  _width -= 8
+  $("#backtop").css("right", _width);
 });
 ```
 
 ### 7、AJAX请求
-```
+```js
 var json ={
   mid: '123',
   version_timestamp: '456'
@@ -628,7 +725,7 @@ $.ajax({
 ```
 
 ### 8、缓存相关操作
-```
+```js
 if(window.localStorage){
   //存储名字为name值为caibin的变量
   localStorage.setItem("name","caibin");
@@ -644,21 +741,16 @@ if(window.localStorage){
 ｝
 ```
 #### 对象类型转为包含JSON文本的字符串类型
-```
+```js
 SignPointList_Data = JSON.stringify(res.Data);
 ```
 #### 转为JSON
-```
+```js
 SignPointList_Data = JSON.parse(SignPointList_Data);
 ```
 
 ### 9、页面向下滚动头部加阴影
-```
-.shadow {
-  box-shadow: 0 0 5px 0 #aaa;
-}
-
-
+```js
 $(window).scroll(function(){
   if ($(document).scrollTop() > 0) {
     $('.header').addClass("shadow");
@@ -677,7 +769,7 @@ $(window).scroll(function(){
 >npm install node-sass --save-dev
 
 打开webpack.base.config.js在loaders里面加上  module -- rules
-```
+```js
   rules: [
     ......
     {
@@ -688,12 +780,12 @@ $(window).scroll(function(){
 ```
 
 然后使用scss
-```
+```html
 <style lang="scss" src="@/styles/main.scss"></style>
 ```
 
-### 2、vue数据便利后进行初始化
-```
+### 2、vue数据遍历后进行初始化
+```js
 that.$axios.get(url).then(function (res) {
   that.rollingNew = res.data.content;
   //重点。在$nextTick方法内进行初始化
@@ -704,8 +796,8 @@ that.$axios.get(url).then(function (res) {
 })
 ```
 
-### 3、vue中常用图片上传。
-```
+### 3、vue中常用图片上传
+```js
 changeImg(e) {
   let token = localStorage.getItem('token')
   let _this = this
@@ -764,7 +856,7 @@ changeImg(e) {
 ```
 ### 4、vue中进行跨域代理及发布注意事项
 #### 1.在config文件中的index.js里，不管dev(开发环境下)与build(发布环境下)都应加入以下代码：
-```
+```js
 proxyTable: {
   '/api': {
     target: 'http://23.101.9.18:8090/apelink',
@@ -777,7 +869,7 @@ proxyTable: {
 },
 ```
 #### 2.在build文件夹中的webpack.prod.conf.js里，含义以下代码:
-```
+```js
 new OptimizeCSSPlugin({
   cssProcessorOptions: config.build.productionSourceMap
   ? { safe: true, map: { inline: false } }
@@ -786,7 +878,7 @@ new OptimizeCSSPlugin({
 ```
 #### 此段代码需要注释掉，目前发现其对于-webkit-box-orient: vertical;会进行消除，
 #### 注意：注释掉此代码后，webpack不会对css进行压缩，所以要在utils.js文件里下面代码中加入minimize: true，如下：
-```
+```js
 const cssLoader = {
   loader: 'css-loader',
   options: {
@@ -797,15 +889,15 @@ const cssLoader = {
 ```
 
 ### 5、使用material-icons
-> $ npm install material-design-icons
+>npm install material-design-icons
 
 main.js全局引入
-```
+```js
 import 'material-design-icons/iconfont/material-icons.css'
 ```
 
 ### 6、监听滚动条到底部
-```
+```js
 created(){
   window.onscroll = function(){
     //变量scrollTop是滚动条滚动时，距离顶部的距离
@@ -824,11 +916,12 @@ created(){
 ```
 
 或者是用div内滚动到90%
-```
+```html
 <div v-on:scroll.passive="onScroll" ref="page">
   ......
 </div>
-
+```
+```js
 data () {
   return {
     finish: true
@@ -841,7 +934,7 @@ onScroll () {
   var scrollHeight = this.$refs.page.scrollHeight;
   if((scrollTop / (scrollHeight - windowHeight) >= 0.9) && this.finish){
     this.finish = false
-    this.$axios.post(url).then(res = > {
+    this.$axios.post(url).then(res => {
       ...
       this.finish = true
     })
@@ -871,13 +964,13 @@ css中写的background-img的路径出错 需要找到build文件夹下的utils.
 
 在项目根目录下的build目录下找到**webpack.base.conf.js**文件，在开头使用以下代码引入webpack，因为该文件默认没有引用
 
-```
+```js
 var webpack = require('webpack')
 ```
 
 **然后在module.exports中添加一段代码**
 
-```
+```js
 // 原有代码
 resolve: {
   extensions: ['.js', '.vue', '.json'],
@@ -906,13 +999,13 @@ module: {
 
 最后在main.js里导入，然后重跑一下项目
 
-```
+```js
 import 'jquery'
 ```
 
 如果有 eslint 检查报错，改文件的module.exports中，为env添加一个键值对 jquery: true 就可以了
 
-```
+```js
 env: {
   // 原有
   browser: true,
