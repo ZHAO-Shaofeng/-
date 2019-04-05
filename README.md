@@ -27,6 +27,7 @@
   7. [AJAX请求](#7ajax请求)
   8. [缓存相关操作](#8缓存相关操作)
   9. [页面向下滚动头部加阴影](#9页面向下滚动头部加阴影)
+  10. [跨域](#10跨域)
 * #### [Vue相关](#vue相关-1)
   1. [使用sass](#1使用sass)
   2. [vue数据遍历后进行初始化](#2vue数据遍历后进行初始化)
@@ -759,6 +760,87 @@ $(window).scroll(function(){
   }
 });
 ```
+
+### 10、跨域
+原因：
+
+1. 发出去的请求不是本域的，协议、域名、端口，任何一个不一样浏览器就认为是跨域（反向代理）
+2. 发出去的请求是XHR（XMLHttpRequest）请求，如果不是，即使跨域了也不报错（jsonp）
+3. 浏览器限制，如果发现是跨域，浏览器就作校验，校验不通过就报错（禁止浏览器检查）
+
+#### 10-1、反向代理
+在hosts文件增加一个表示调用方的虚拟主机
+```host
+127.0.0.0 test.com
+```
+##### nginx反向代理
+```
+nginx-1.11.5
+    │
+    └─ conf
+        │
+        └─ vhost
+            │
+            └─ 新建一个配置文件 test.com.conf
+```
+test.com.conf 配置如下
+```
+server{
+  listen 80;
+  server_name test.com;
+
+  location / {
+    proxy_pass http://localhost:8080/;
+  }
+
+  location /api {
+    proxy_pass http://example.com/api/;
+  }
+}
+```
+
+启动nginx，然后访问test.com
+> start nginx.exe
+
+暂停或者重载nginx
+> nginx.exe -s stop
+
+> nginx.exe -s reload
+
+##### apache反向代理
+找到apache虚拟主机的配置文件 httpd-vhost.conf ，添加配置，然后启动或重启apache
+```
+<VirtualHost *:80>
+  ServerName test.com
+  ErrorLog "logs/test.com-error.log"
+  CustomLog "logs/test.com-access.log" common
+  ProxyPass /api http://example.com/api/
+  ProxyPass / http://localhost:8080/
+</VirtualHost>
+```
+
+#### 10-2、jsonp
+jsonp是json的一种补充使用方式，不是官方协议，主要是以script标签请求资源来解决跨域，是一种变通的解决方案，后台需要改动代码。
+
+前后台约定如果参数里带了callback，那它就是一个jsonp请求，返回的时候就返回js代码而不是返回json，js代码的内容就是callback的值作为函数名，返回的数据作为函数的参数，这就是jsonp的实现原理。
+
+jsonp的弊端：
+
+1. 后台需要改动代码支持
+2. 只支持GET请求，无法满足实际需求
+3. 发送的不是XHR请求，XHR的新特性jsonp都没有，譬如异步和其他各种事件
+
+```
+$.ajax({
+  url: '',
+  type: 'post',
+  dataType: 'jsonp',
+  ...
+```
+
+#### 10-3、禁止浏览器检查
+命令行参数启动chrome 禁止浏览器作校验
+> chrome --disable-web-security --user-data-dir=g:\temp3
 
 ## Vue相关
 ### 1、使用sass
