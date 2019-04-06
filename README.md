@@ -811,6 +811,7 @@ server{
 > nginx.exe -s reload
 
 **apache反向代理**
+
 找到apache虚拟主机的配置文件 httpd-vhost.conf ，添加配置，然后启动或重启apache
 ```
 <VirtualHost *:80>
