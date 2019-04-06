@@ -37,11 +37,13 @@
   6. [监听滚动条到底部](#6监听滚动条到底部)
   7. [关于Vue打包之后文件路径出错的问题](#7关于vue打包之后文件路径出错的问题)
   8. [使用jquery](#8使用jquery)
+  9. [组件之间的通信](#9组件之间的通信)
+##### [npm使用淘宝镜像](#npm使用淘宝镜像)
 
 
 ## 开发规范
 > 不管有多少人共同参与同一项目，一定要确保每一行代码都像是同一个人编写的。    
-[编码规范传送门](http://codeguide.bootcss.com/)
+[内容来源 -> http://codeguide.bootcss.com/](http://codeguide.bootcss.com/)
 
 ## 开发注意事项
 
@@ -191,7 +193,7 @@ input:-ms-input-placeholder{
 ```
  
 ### 5、渐变
-*  从上到下
+**从上到下**
 ```css
 .demo{
   background: -webkit-linear-gradient(red, blue);
@@ -201,14 +203,14 @@ input:-ms-input-placeholder{
 }
 ```
  
-*  从左到右
+**从左到右**
 ```css
 .demo{
   background: linear-gradient(to right, red , blue);
 }
 ```
  
-*  角度
+**角度**
 ```css
 .demo{
   background: linear-gradient(to bottom right, red , blue);  /*左上角至右下角*/
@@ -216,7 +218,7 @@ input:-ms-input-placeholder{
 }
 ```
  
-*  多个颜色
+**多个颜色**
 ```css
 .demo{
   background: linear-gradient(red, green, blue);
@@ -250,7 +252,7 @@ body{
 ```
 
 ### 7、css三角形
-[传送门](http://www.jb51.net/article/42513.htm)
+[内容来源 -> http://www.jb51.net/article/42513.htm](http://www.jb51.net/article/42513.htm)
 
 ### 8、tab常用响应式不转行，可左右拉动
 放在容器里的样式
@@ -275,7 +277,7 @@ body{
 ```
 
 ### 10、重置样式
-参考网站：https://meyerweb.com/eric/tools/css/reset/index.html
+[内容来源 -> https://meyerweb.com/eric/tools/css/reset/index.html](https://meyerweb.com/eric/tools/css/reset/index.html)
 ```css
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -741,11 +743,11 @@ if(window.localStorage){
   localStorage.clear();
 ｝
 ```
-#### 对象类型转为包含JSON文本的字符串类型
+**对象类型转为包含JSON文本的字符串类型**
 ```js
 SignPointList_Data = JSON.stringify(res.Data);
 ```
-#### 转为JSON
+**转为JSON**
 ```js
 SignPointList_Data = JSON.parse(SignPointList_Data);
 ```
@@ -773,7 +775,8 @@ $(window).scroll(function(){
 ```host
 127.0.0.0 test.com
 ```
-##### nginx反向代理
+
+**nginx反向代理**
 ```
 nginx-1.11.5
     │
@@ -807,7 +810,7 @@ server{
 
 > nginx.exe -s reload
 
-##### apache反向代理
+**apache反向代理**
 找到apache虚拟主机的配置文件 httpd-vhost.conf ，添加配置，然后启动或重启apache
 ```
 <VirtualHost *:80>
@@ -1050,7 +1053,7 @@ css中写的background-img的路径出错 需要找到build文件夹下的utils.
 var webpack = require('webpack')
 ```
 
-**然后在module.exports中添加一段代码**
+然后在**module.exports**中添加一段代码
 
 ```js
 // 原有代码
@@ -1096,12 +1099,237 @@ env: {
 }
 ```
 
-### 
+### 9、组件之间的通信
+[内容来源 -> https://segmentfault.com/a/1190000010530600?utm_source=tag-newest](https://segmentfault.com/a/1190000010530600?utm_source=tag-newest)
+
+组件关系有下面三种：父-->子、子-->父、非父子
+
+#### 9-1、父-->子
+
+父向子传递数据通过props
+
+```
+**父组件代码**
+<template>
+    <header-box :title-txt="showTitleTxt"></header-box>
+</template>
+<script>
+    import Header from './header'
+    export default {
+        name: 'index',
+        components: {
+            'header-box': Header
+        },
+        data () {
+            return {
+                showTitleTxt: '首页'
+            }
+        }
+    }
+</script>
+```
+```
+**子组件代码**
+<template>
+    <header>
+        {{thisTitleTxt}}
+    </header>
+</template>
+<script>
+    export default {
+        name: 'header-box',
+        props: {
+            titleTxt: String
+        },
+        data () {
+            return {
+                thisTitleTxt: this.titleTxt
+            }
+        }
+    }
+</script>
+```
+
+#### 9-2、子-->父
+
+子组件向父组件传递分为两种类型。
+1. 子组件改变父组件传递的props（你会发现通过props中的Object类型参数传输数据，可以通过子组件改变数据内容。这种方式是可行的，但是不推荐使用，因为官方定义prop是单向绑定）
+2. 通过$on和$emit
+
+**通过props实现传递**
+```
+**父组件代码**
+<template>
+    <header-box :title-txt="showTitleTxt"></header-box>
+</template>
+<script>
+    import Header from './header'
+    export default {
+        name: 'index',
+        components: {
+            'header-box': Header
+        },
+        data () {
+            return {
+                showTitleTxt: {
+                    name: '首页'
+                }
+            }
+        }
+    }
+</script>
+```
+```
+**子组件代码**
+<template>
+    <header @click="changeTitleTxt">
+        {{thisTitleTxt.name}}
+    </header>
+</template>
+<script>
+    export default {
+        name: 'header-box',
+        props: {
+            titleTxt: Object
+        },
+        data () {
+            return {
+                thisTitleTxt: this.titleTxt.name
+            }
+        },
+        metheds: {
+            changeTitleTxt () {
+                this.titleTxt.name = '切换'
+            }
+        }
+    }
+</script>
+```
+
+**通过$on,$emit**
+```
+**父组件代码**
+<template>
+    <div id="counter-event-example">
+      <p>{{ total }}</p>
+      <button-counter @increment="incrementTotal"></button-counter>
+</div>
+</template>
+<script>
+    import ButtonCounter from './buttonCounter'
+    export default {
+        name: 'index',
+        components: {
+            'button-conuter': ButtonCounter
+        },
+        data () {
+            return {
+                total: 0
+            }
+        },
+        methods: {
+            incrementTotal () {
+                this.total++
+            }
+        }
+    }
+</script>
+```
+```
+**子组件代码**
+<template>
+    <button @click="incrementCounter">{{counter}}</button>
+</template>
+<script>
+    export default {
+        name: 'button-counter',
+        data () {
+            return {
+                counter: 0
+            }
+        },
+        metheds: {
+            incrementCounter () {
+                this.$emit('increment')
+                this.counter++
+            }
+        }
+    }
+</script>
+```
+
+#### 9-3、非父子
+简单情况下我们可以通过使用一个空的Vue实例作为中央事件总线，（这里也可以使用app实例，而不需要新建一个空Vue实例）
+
+```
+**main.js**
+let bus = new Vue()
+Vue.prototype.bus = bus
+```
+
+或者
+
+```
+**main.js**
+new Vue({
+  el: '#app',
+  router,
+  template: '<App/>',
+  components: { App },
+  beforeCreate () {
+    Vue.prototype.bus = this
+  }
+})
+```
+
+```
+**header组件**
+<template>
+    <header @click="changeTitle">{{title}}</header>
+</template>
+<script>
+export default {
+    name: 'header',
+    data () {
+        return {
+            title: '头部'
+        }
+    },
+    methods: {
+        changeTitle () {
+            this.bus.$emit('toChangeTitle','首页')
+        }
+    }
+}
+</script>
+```
+```
+**footer组件**
+<template>
+    <footer>{{txt}}</footer>
+</template>
+<script>
+export default {
+    name: 'footer',
+    mounted () {
+        this.bus.$on('toChangeTitle', function (title) {
+            console.log(title)
+        })
+    },
+    data () {
+        return {
+            txt: '尾部'
+        }
+    }
+}
+```
+
+---
 
 #### npm使用淘宝镜像
 >npm install -g cnpm --registry=https://registry.npm.taobao.org
 
-#
+---
 
 ```
                                                        _ooOoo_
