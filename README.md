@@ -48,24 +48,22 @@
 
 ## 开发注意事项
 
-1、插件的版本是否统一；
+1、编码尽量简洁、对齐，避免无用标签和错误的写法；
 
-2、全局样式用谁的；
+2、插件的版本是否统一；
 
-3、样式表的结构是不是继承的写法，会不会互相干扰；
+3、全局样式用谁的；
 
-4、样式优先级如下：    
+4、样式表的结构是不是继承的写法，会不会互相干扰；
+
+5、样式优先级如下：    
 ` 通用选择器 * < 元素(类型)选择器 < 类选择器 < 属性选择器 < 伪类 < ID 选择器 < 内联样式 `
 
-5、团队协作下使用git了吗；
+6、团队协作下使用Git了吗；
 
-6、不同团队开发，在关于复用的组件以及全局的变量是否有进行沟通；
+7、不同团队开发，在关于复用的组件以及全局的变量是否有进行沟通；
 
-7、如非特殊情况，慎用!important，因为使用!important会扰乱原本层叠和权重产生正常的作用顺序，使后期维护带来麻烦；
-
-8、链接加title，图标加alt，logo要用h1包裹！
-
-9、一排的展示布局优先使用swiper，否则后面说要加滑动功能就麻烦一些，不如直接用swiper然后不初始化就行了！
+8、常规SEO：a加title、 rel="nofollow"，img加alt，logo用h1包裹...
 
 
 ## HTML head
@@ -148,11 +146,11 @@
 
 当然预编译处理的样式表文件需要配合webpack这样的打包工具才能更加高效的发挥它的作用，整合并压缩资源文件等
 
-就算是用的原生css来写，如果在class上写明哪个文件并添加注释之后，不觉得这样看起来更清晰吗
+就算是用的原生css来写，在class上写明哪个文件并添加注释，或者在class命名上规范一下（譬如 关于我们： .aboutPage），这样看起来会更清晰
 
 ![原生css](https://raw.githubusercontent.com/ZHAO-Shaofeng/Related-considerations-for-HTML-CSS-JS/master/github-img/css.png)
 
-只是用Less举个例子想把方法说清楚，至于用原生css还是用css的预编译处理语言这里不作讨论
+只是用Less举个例子把方法说清楚，至于用原生css还是用css的预编译处理语言这里不作讨论
 
 但是显然用预编译处理语言在开发和贴近规范上会更方便一些，这是推荐使用的。    
 如果我们的样式表都是通过嵌套规则来一个个继承的，不管你用哪个都不会有任何冲突，因为彼此之间的关系是很清晰的。
@@ -174,6 +172,7 @@
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  /* max-height: ??; */
 }
 ```
 
@@ -503,19 +502,23 @@ $(".navbar-nav a").each(function(){
 ```
 ```js
 var Swiper1 = new Swiper('.swiper-container', {
+  speed: 300,                     //切换速度
   autoplay: {                     //自动播放
     delay: 3000,                  //间隔时间
     disableOnInteraction: false,  //用户操作swiper之后，是否禁止autoplay。
   },
+  direction : 'horizontal',       //滑动方向，'horizontal'为横向，'vertical'为竖向
   slidesPerView: 4,               //一屏显示多少个
   slidesPerColumn: 2,             //显示2行
   spaceBetween: 30,               //每个之间的间距
+  autoHeight: true,               //高度随内容变化
+  watchOverflow: true,            //当没有足够的slide切换时，swiper会失效且隐藏导航
   noSwiping : true,               //使该slide无法拖动，希望文字被选中时可以考虑使用
   noSwipingClass : 'no-swiper',
   centeredSlides : true,          //居中显示
   loop: true,                     //头尾循环
   observer: true,                 //修改swiper自己或子元素时，自动初始化swiper 
-  observeParents: true,           //修改swiper的父元素时，自动初始化swiper 
+  observeParents: true,           //修改swiper的父元素时，自动初始化swiper
   pagination: {                   //分页器
     el: '.swiper-pagination',
     clickable :true               //允许点击分页器切换
