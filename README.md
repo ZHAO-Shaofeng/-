@@ -29,6 +29,8 @@
   8. [缓存相关操作](#8缓存相关操作)
   9. [页面向下滚动头部加阴影](#9页面向下滚动头部加阴影)
   10. [跨域](#10跨域)
+  11. [获取form表单json数据](#11获取form表单json数据)
+  12. [电脑版微信内置浏览器不支持 Object.assign 方法报错的解决](#12电脑版微信内置浏览器不支持-objectassign-方法报错的解决)
 * #### [Vue相关](#vue相关-1)
   1. [使用sass](#1使用sass)
   2. [vue数据遍历后进行初始化](#2vue数据遍历后进行初始化)
@@ -43,8 +45,12 @@
 
 
 ## 开发规范
-<!-- > 不管有多少人共同参与同一项目，一定要确保每一行代码都像是同一个人编写的。     -->
-[内容来源 -> http://codeguide.bootcss.com/](http://codeguide.bootcss.com/)
+> 不管有多少人共同参与同一项目，一定要确保每一行代码都像是同一个人编写的。
+
+[Github 上获得星标最多的 web前端开发规范，内容来源 -> http://imweb.github.io/CodeGuide/](http://imweb.github.io/CodeGuide/)
+
+[Bootstrap 上关于HTML 和 CSS 代码的规范，内容来源 -> http://codeguide.bootcss.com/](http://codeguide.bootcss.com/)
+
 
 ## 开发注意事项
 
@@ -836,7 +842,7 @@ jsonp的弊端：
 2. 只支持GET请求，无法满足实际需求
 3. 发送的不是XHR请求，XHR的新特性jsonp都没有，譬如异步和其他各种事件
 
-```
+```js
 $.ajax({
   url: '',
   type: 'post',
@@ -847,6 +853,66 @@ $.ajax({
 #### 10-3、禁止浏览器检查
 命令行参数启动chrome 禁止浏览器作校验
 > chrome --disable-web-security --user-data-dir=g:\temp3
+
+### 11、获取form表单json数据
+```js
+$(document).on("click", ".submit-btn", function (e) {
+  e.preventDefault();
+  var $this = $(this);
+  var form = $this.parents('form');
+  var data = form.serializeArray();
+  var json = {};
+  $.each(data, function() {
+    if (json[this.name]) {
+      if (!json[this.name].push) {
+        json[this.name] = [ json[this.name] ];
+      }
+      json[this.name].push(this.value || '');
+    } else {
+      json[this.name] = this.value || '';
+    }
+  });
+  console.log(json);
+})
+```
+
+### 12、电脑版微信内置浏览器不支持 Object.assign 方法报错的解决
+[内容来源 -> https://www.cnblogs.com/tindy/p/9299860.html](https://www.cnblogs.com/tindy/p/9299860.html)
+
+H5页面JS里用Object.assign，在移动端跑的好好的，在pc版微信网页浏览器里死活报错，原来是pc微信浏览器内核版本过低问题，找到了解决办法，上代码
+
+```js
+// 解决微信浏览器不支持Object.assign这个函数
+if (typeof Object.assign != 'function') {
+  // Must be writable: true, enumerable: false, configurable: true
+  Object.defineProperty(Object, "assign", {
+    value: function assign(target, varArgs) { // .length of function is 2
+      'use strict';
+      if (target == null) { // TypeError if undefined or null
+        throw new TypeError('Cannot convert undefined or null to object');
+      }
+
+      var to = Object(target);
+
+      for (var index = 1; index < arguments.length; index++) {
+        var nextSource = arguments[index];
+
+        if (nextSource != null) { // Skip over if undefined or null
+          for (var nextKey in nextSource) {
+            // Avoid bugs when hasOwnProperty is shadowed
+            if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+              to[nextKey] = nextSource[nextKey];
+            }
+          }
+        }
+      }
+      return to;
+    },
+    writable: true,
+    configurable: true
+  });
+}
+```
 
 ## Vue相关
 ### 1、使用sass
