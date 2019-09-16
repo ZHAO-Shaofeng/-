@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -16,7 +17,7 @@
 <meta property="og:url" content="https://bemzhao.github.io/notes/" />
 <meta property="og:site_name" content="notes" />
 <script type="application/ld+json">
-{"@type":"WebSite","url":"https://bemzhao.github.io/notes/","headline":"目录","name":"notes","description":"记录开发中常用到的方法以及遇到的问题","@context":"http://schema.org"}</script>
+{"@type":"WebSite","headline":"目录","url":"https://bemzhao.github.io/notes/","name":"notes","description":"记录开发中常用到的方法以及遇到的问题","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link rel="stylesheet" href="assets/style.css">
@@ -24,7 +25,6 @@
   <body style="padding: 0 0 0 370px;">
     <div class="container-lg px-5 markdown-body" style="max-width: inherit;">
       
-      <!-- <h1><a href="https://bemzhao.github.io/notes/">notes</a></h1> -->
       
 
 <ul style="position: fixed;
@@ -268,7 +268,7 @@
 <p><strong>角度</strong></p>
 <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.demo</span><span class="p">{</span>
   <span class="nl">background</span><span class="p">:</span> <span class="n">linear-gradient</span><span class="p">(</span><span class="n">to</span> <span class="nb">bottom</span> <span class="nb">right</span><span class="p">,</span> <span class="no">red</span> <span class="p">,</span> <span class="no">blue</span><span class="p">);</span>  <span class="c">/*左上角至右下角*/</span>
-  <span class="nl">background</span><span class="p">:</span> <span class="n">linear-gradient</span><span class="p">(</span><span class="m">180deg</span><span class="p">,</span> <span class="no">red</span><span class="p">,</span> <span class="no">blue</span><span class="p">);</span> <span class="err"> </span><span class="c">/*指定角度*/</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="n">linear-gradient</span><span class="p">(</span><span class="m">180deg</span><span class="p">,</span> <span class="no">red</span><span class="p">,</span> <span class="no">blue</span><span class="p">);</span> <span class="err"> </span><span class="c">/*指定角度*/</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -289,16 +289,16 @@
   <span class="nl">height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="nt">body</span><span class="p">{</span>
-	<span class="nl">height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
-	<span class="nl">min-height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
-	<span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
-	<span class="nl">flex-direction</span><span class="p">:</span> <span class="n">column</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">min-height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">column</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="nc">.main</span><span class="p">{</span>
-	<span class="nl">flex</span><span class="p">:</span> <span class="m">1</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
+  <span class="nl">flex</span><span class="p">:</span> <span class="m">1</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="nc">.footer</span><span class="p">{</span>
-	<span class="nl">flex</span><span class="p">:</span> <span class="m">0</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
+  <span class="nl">flex</span><span class="p">:</span> <span class="m">0</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -345,35 +345,35 @@
 <span class="nt">figure</span><span class="o">,</span> <span class="nt">figcaption</span><span class="o">,</span> <span class="nt">footer</span><span class="o">,</span> <span class="nt">header</span><span class="o">,</span> <span class="nt">hgroup</span><span class="o">,</span> 
 <span class="nt">menu</span><span class="o">,</span> <span class="nt">nav</span><span class="o">,</span> <span class="nt">output</span><span class="o">,</span> <span class="nt">ruby</span><span class="o">,</span> <span class="nt">section</span><span class="o">,</span> <span class="nt">summary</span><span class="o">,</span>
 <span class="nt">time</span><span class="o">,</span> <span class="nt">mark</span><span class="o">,</span> <span class="nt">audio</span><span class="o">,</span> <span class="nt">video</span> <span class="p">{</span>
-	<span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
-	<span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
-	<span class="nl">border</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
-	<span class="nl">font-size</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
-	<span class="nl">font</span><span class="p">:</span> <span class="nb">inherit</span><span class="p">;</span>
-	<span class="nl">vertical-align</span><span class="p">:</span> <span class="nb">baseline</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">font</span><span class="p">:</span> <span class="nb">inherit</span><span class="p">;</span>
+  <span class="nl">vertical-align</span><span class="p">:</span> <span class="nb">baseline</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="c">/* HTML5 display-role reset for older browsers */</span>
 <span class="nt">article</span><span class="o">,</span> <span class="nt">aside</span><span class="o">,</span> <span class="nt">details</span><span class="o">,</span> <span class="nt">figcaption</span><span class="o">,</span> <span class="nt">figure</span><span class="o">,</span> 
 <span class="nt">footer</span><span class="o">,</span> <span class="nt">header</span><span class="o">,</span> <span class="nt">hgroup</span><span class="o">,</span> <span class="nt">menu</span><span class="o">,</span> <span class="nt">nav</span><span class="o">,</span> <span class="nt">section</span> <span class="p">{</span>
-	<span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="nt">body</span> <span class="p">{</span>
-	<span class="nl">line-height</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="nt">ol</span><span class="o">,</span> <span class="nt">ul</span> <span class="p">{</span>
-	<span class="nl">list-style</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="nl">list-style</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="nt">blockquote</span><span class="o">,</span> <span class="nt">q</span> <span class="p">{</span>
-	<span class="nl">quotes</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="nl">quotes</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="nt">blockquote</span><span class="nd">:before</span><span class="o">,</span> <span class="nt">blockquote</span><span class="nd">:after</span><span class="o">,</span>
 <span class="nt">q</span><span class="nd">:before</span><span class="o">,</span> <span class="nt">q</span><span class="nd">:after</span> <span class="p">{</span>
-	<span class="nl">content</span><span class="p">:</span> <span class="s2">''</span><span class="p">;</span>
-	<span class="nl">content</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="nl">content</span><span class="p">:</span> <span class="s2">''</span><span class="p">;</span>
+  <span class="nl">content</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="nt">table</span> <span class="p">{</span>
-	<span class="nl">border-collapse</span><span class="p">:</span> <span class="nb">collapse</span><span class="p">;</span>
-	<span class="nl">border-spacing</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">border-collapse</span><span class="p">:</span> <span class="nb">collapse</span><span class="p">;</span>
+  <span class="nl">border-spacing</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -417,14 +417,13 @@
 <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.flexbox</span><span class="p">{</span>
   <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
   <span class="nc">.box-row</span><span class="p">{</span>
-    <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="m">-10px</span><span class="p">;</span>
     <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
     <span class="nl">flex-wrap</span><span class="p">:</span> <span class="n">wrap</span><span class="p">;</span>
-    <span class="c1">// align-items: flex-start;
-</span>  <span class="p">}</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="m">-10px</span><span class="p">;</span>
+  <span class="p">}</span>
   <span class="nc">.box-col</span><span class="p">{</span>
     <span class="nl">flex</span><span class="p">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">25%</span><span class="p">;</span>
-    <span class="nl">min-width</span><span class="p">:</span> <span class="m">25%</span><span class="p">;</span>
+    <span class="nl">max-width</span><span class="p">:</span> <span class="m">25%</span><span class="p">;</span>
     <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span> <span class="m">10px</span><span class="p">;</span>
     <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">15px</span><span class="p">;</span>
   <span class="p">}</span>
@@ -432,7 +431,7 @@
 </code></pre></div></div>
 
 <h3 id="15关于移动端下的布局">15、关于移动端下的布局</h3>
-<p><strong>在布局上我个人不建议使用position: fixed来达到固定的效果</strong></p>
+<p>使用了绝对定位固定了三个板块，固定定位在打包的App内嵌的网页里存在抖动的问题</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌─page──────────────────────────┐
 │ ┌─header────────────────────┐ │
@@ -537,20 +536,21 @@
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div></div>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">Swiper1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Swiper</span><span class="p">(</span><span class="s1">'.swiper-container'</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">speed</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>                     <span class="c1">//切换速度</span>
+  <span class="na">speed</span><span class="p">:</span> <span class="mi">700</span><span class="p">,</span>                     <span class="c1">//切换速度</span>
   <span class="na">autoplay</span><span class="p">:</span> <span class="p">{</span>                     <span class="c1">//自动播放</span>
     <span class="na">delay</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span>                  <span class="c1">//间隔时间</span>
     <span class="na">disableOnInteraction</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>  <span class="c1">//用户操作swiper之后，是否禁止autoplay。</span>
   <span class="p">},</span>
-  <span class="na">direction</span> <span class="p">:</span> <span class="s1">'horizontal'</span><span class="p">,</span>       <span class="c1">//滑动方向，'horizontal'为横向，'vertical'为竖向</span>
+  <span class="na">direction</span><span class="p">:</span> <span class="s1">'horizontal'</span><span class="p">,</span>        <span class="c1">//滑动方向，'horizontal'为横向，'vertical'为竖向</span>
   <span class="na">slidesPerView</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>               <span class="c1">//一屏显示多少个</span>
   <span class="na">slidesPerColumn</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>             <span class="c1">//显示2行</span>
   <span class="na">spaceBetween</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>               <span class="c1">//每个之间的间距</span>
   <span class="na">autoHeight</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>               <span class="c1">//高度随内容变化</span>
   <span class="na">watchOverflow</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>            <span class="c1">//当没有足够的slide切换时，swiper会失效且隐藏导航</span>
-  <span class="na">noSwiping</span> <span class="p">:</span> <span class="kc">true</span><span class="p">,</span>               <span class="c1">//使该slide无法拖动，希望文字被选中时可以考虑使用</span>
-  <span class="na">noSwipingClass</span> <span class="p">:</span> <span class="s1">'no-swiper'</span><span class="p">,</span>
-  <span class="na">centeredSlides</span> <span class="p">:</span> <span class="kc">true</span><span class="p">,</span>          <span class="c1">//居中显示</span>
+  <span class="na">followFinger</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>            <span class="c1">//slide不跟随手指滑动切换</span>
+  <span class="na">noSwiping</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>                <span class="c1">//使该slide无法拖动，希望文字被选中时可以考虑使用</span>
+  <span class="na">noSwipingClass</span><span class="p">:</span> <span class="s1">'no-swiper'</span><span class="p">,</span>
+  <span class="na">centeredSlides</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>           <span class="c1">//居中显示</span>
   <span class="na">loop</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>                     <span class="c1">//头尾循环</span>
   <span class="na">observer</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>                 <span class="c1">//修改swiper自己或子元素时，自动初始化swiper </span>
   <span class="na">observeParents</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>           <span class="c1">//修改swiper的父元素时，自动初始化swiper</span>
@@ -1039,7 +1039,7 @@
     <span class="nl">target</span><span class="p">:</span> <span class="s1">'http://23.101.9.18:8090/apelink'</span><span class="p">,</span>
     <span class="nx">secure</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nx">changeOrigin</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  	<span class="nx">pathRewrite</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">pathRewrite</span><span class="p">:</span> <span class="p">{</span>
       <span class="s1">'^/api'</span><span class="p">:</span> <span class="s1">'/'</span>
     <span class="p">}</span>
   <span class="p">}</span>
