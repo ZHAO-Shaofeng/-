@@ -381,14 +381,13 @@ input{
 .flexbox{
   overflow: hidden;
   .box-row{
-    margin: 0 -10px;
     display: flex;
     flex-wrap: wrap;
-    // align-items: flex-start;
+    margin: 0 -10px;
   }
   .box-col{
     flex: 0 0 25%;
-    min-width: 25%;
+    max-width: 25%;
     padding: 0 10px;
     margin: 0 0 15px;
   }
@@ -396,7 +395,7 @@ input{
 ```
 
 ### 15、关于移动端下的布局
-**在布局上我个人不建议使用position: fixed来达到固定的效果**
+使用了绝对定位固定了三个板块，固定定位在打包的App内嵌的网页里存在抖动的问题
 
 ```
 ┌─page──────────────────────────┐
@@ -508,20 +507,21 @@ $(".navbar-nav a").each(function(){
 ```
 ```js
 var Swiper1 = new Swiper('.swiper-container', {
-  speed: 300,                     //切换速度
+  speed: 700,                     //切换速度
   autoplay: {                     //自动播放
     delay: 3000,                  //间隔时间
     disableOnInteraction: false,  //用户操作swiper之后，是否禁止autoplay。
   },
-  direction : 'horizontal',       //滑动方向，'horizontal'为横向，'vertical'为竖向
+  direction: 'horizontal',        //滑动方向，'horizontal'为横向，'vertical'为竖向
   slidesPerView: 4,               //一屏显示多少个
   slidesPerColumn: 2,             //显示2行
   spaceBetween: 30,               //每个之间的间距
   autoHeight: true,               //高度随内容变化
   watchOverflow: true,            //当没有足够的slide切换时，swiper会失效且隐藏导航
-  noSwiping : true,               //使该slide无法拖动，希望文字被选中时可以考虑使用
-  noSwipingClass : 'no-swiper',
-  centeredSlides : true,          //居中显示
+  followFinger: false,            //slide不跟随手指滑动切换
+  noSwiping: true,                //使该slide无法拖动，希望文字被选中时可以考虑使用
+  noSwipingClass: 'no-swiper',
+  centeredSlides: true,           //居中显示
   loop: true,                     //头尾循环
   observer: true,                 //修改swiper自己或子元素时，自动初始化swiper 
   observeParents: true,           //修改swiper的父元素时，自动初始化swiper
